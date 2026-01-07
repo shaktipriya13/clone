@@ -1,23 +1,40 @@
 import express from "express";
+import morgan from "morgan";
 import sequelize from "./src/models/index.js";
 import seedUser from "./src/seeders/seedUser.js";
 import seedProducts from "./src/seeders/productSeeder.js";
 
+// routes
+import productRoutes from "./src/routes/productRoutes.js";
+import cartRoutes from "./src/routes/cartRoutes.js";
+import orderRoutes from "./src/routes/orderRoutes.js";
+
 const app = express();
 
+// =====================
+// Middlewares
+// =====================
 app.use(express.json());
+app.use(morgan("dev"));
 
+// =====================
+// Routes
+// =====================
+app.use("/api/cart", cartRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
+
+// =====================
+// Server Start
+// =====================
 const startServer = async () => {
   try {
-    // 1️⃣ Sync database & create tables
     await sequelize.sync({ alter: true });
     console.log("✅ Tables created / updated successfully");
 
-    // 2️⃣ Seed default data
     await seedUser();
     await seedProducts();
 
-    // 3️⃣ Start server ONLY after DB is ready
     app.listen(5000, () => {
       console.log("🚀 Server running on port 5000");
     });
