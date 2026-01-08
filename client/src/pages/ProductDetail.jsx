@@ -12,14 +12,18 @@ const CustomToast = ({ message }) => (
   </div>
 );
 
+import { useCart } from "../context/CartContext";
+
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const { refreshCart } = useCart();
 
   useEffect(() => {
+    // ... useEffect content remains same, just ensuring hook order ...
     const fetchProduct = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/api/products/${id}`);
@@ -46,6 +50,7 @@ const ProductDetail = () => {
       await axios.post("http://localhost:5000/api/cart/add", {
         productId: product.id,
       });
+       await refreshCart();
        navigate("/cart");
     } catch (error) {
       console.error("Error adding to cart:", error);

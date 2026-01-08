@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaShoppingCart, FaUser, FaHeart, FaBox, FaGift, FaTag, FaBell, FaSignOutAlt, FaStar, FaCoins } from "react-icons/fa";
 import "../styles/Navbar.css";
+import { useCart } from "../context/CartContext";
 
 const Navbar = () => {
+    const { cartCount } = useCart();
     const [searchTerm, setSearchTerm] = useState("");
     const navigate = useNavigate();
 
@@ -83,8 +85,24 @@ const Navbar = () => {
 
                     <div style={{color: 'white', fontWeight: '500', cursor:'pointer'}}>More</div>
                     
-                    <Link to="/cart" className="cart-link">
+                    <Link to="/cart" className="cart-link" style={{position: 'relative'}}>
                          <FaShoppingCart style={{fontSize: '20px'}}/>
+                         {cartCount > 0 && (
+                            <div style={{
+                                position: 'absolute',
+                                top: '-8px',
+                                left: '12px',
+                                background: '#ff6161',
+                                borderRadius: '4px',
+                                padding: '1px 4px',
+                                fontSize: '10px',
+                                fontWeight: 'bold',
+                                color: 'white',
+                                border: '1px solid #fff'
+                            }}>
+                                {cartCount}
+                            </div>
+                         )}
                          <span>Cart</span>
                     </Link>
                 </div>
