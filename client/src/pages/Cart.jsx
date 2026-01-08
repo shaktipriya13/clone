@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import Loader from "../components/Loader";
 import "../styles/Cart.css";
@@ -9,6 +9,9 @@ const Cart = () => {
   const [cartItmes, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const { refreshCart } = useCart();
+  const navigate = useNavigate();
+
+
 
   const fetchCart = async () => {
     try {
@@ -124,7 +127,7 @@ const Cart = () => {
           </div>
 
           <div className="place-order-section">
-            <button className="place-order-btn" onClick={() => window.location.href = '/checkout'}>PLACE ORDER</button>
+            <button className="place-order-btn" onClick={() => navigate('/checkout')}>PLACE ORDER</button>
           </div>
         </div>
 
