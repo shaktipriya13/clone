@@ -66,7 +66,7 @@ A fully functional, pixel-perfect clone of the **Flipkart** e-commerce platform.
 
 | Home Page | Search Results & Filters |
 | :---: | :---: |
-| <img src="images/home1.png" alt="Home Page" width="400"/> | <img src="images/search.png" alt="Search Page" width="400"/> |
+| <img src="https://github.com/user-attachments/assets/329c0d94-6d40-4e71-bf62-f4d3fa9dfaea" width="400" alt="image" />| <img src="images/search.png" alt="Search Page" width="400"/> |
 
 | Product Detail | Cart Page |
 | :---: | :---: |
