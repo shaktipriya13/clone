@@ -52,6 +52,9 @@ const Navbar = () => {
 
         {/* SEARCH */}
         <form className="search-bar" onSubmit={handleSearch}>
+            <button type="submit" className="search-icon-btn">
+            <FaSearch />
+          </button>
           <input
             type="text"
             className="search-input"
@@ -59,9 +62,7 @@ const Navbar = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button type="submit" className="search-icon-btn">
-            <FaSearch />
-          </button>
+          
         </form>
 
         {/* NAV ITEMS */}
