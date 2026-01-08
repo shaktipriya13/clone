@@ -6,6 +6,13 @@
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: background-color 0.2s ease;
+}
+
+/* Home Page specific styles */
+.navbar.is-home {
+    background-color: #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.16);
 }
 
 .navbar-container {
@@ -17,6 +24,11 @@
     padding: 0 16px;
 }
 
+/* Change container text color when on home */
+.navbar.is-home .navbar-container {
+    color: #212121;
+}
+
 /* Logo Section */
 .logo {
     display: flex;
@@ -26,6 +38,11 @@
 }
 
 .logo-img { width: 75px; }
+
+/* In case logo is blue, adjust height for the SVG variant */
+.navbar.is-home .logo-img {
+    width: 120px;
+}
 
 .logo-sub {
     font-size: 11px;
@@ -39,13 +56,7 @@
 .plus-text { color: #ffe500; font-weight: 600; margin-left: 2px; }
 .plus-icon { width: 10px; margin-left: 2px; }
 
-
-
-
-
-/* ===============================
-   Search Bar Fixed
-================================ */
+/* Search Bar */
 .search-bar {
     background-color: white;
     width: 38vw;
@@ -55,8 +66,14 @@
     margin-left: 12px;
     border-radius: 2px;
     overflow: hidden;
-    /* Ensures no shadows from the container look like strips */
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.23); 
+}
+
+/* Slight background change for search on white navbar */
+.navbar.is-home .search-bar {
+    background-color: #f0f5ff;
+    box-shadow: none;
+    border: 1px solid #e0e0e0;
 }
 
 .search-input {
@@ -65,12 +82,14 @@
     padding: 0 16px;
     font-size: 14px;
     outline: none;
-    /* 🔥 Force white background and remove browser defaults */
     background-color: #ffffff !important; 
     color: #000;
 }
 
-/* Fix for Chrome/Edge Autofill (often causes dark/yellow strips) */
+.navbar.is-home .search-input {
+    background-color: #f0f5ff !important;
+}
+
 .search-input:-webkit-autofill,
 .search-input:-webkit-autofill:hover, 
 .search-input:-webkit-autofill:focus {
@@ -80,13 +99,17 @@
 
 .search-icon-btn {
     border: none;
-    background: white; /* Match the bar background */
+    background: white; 
     padding: 0 12px;
     cursor: pointer;
     color: #2874f0;
     font-size: 16px;
     display: flex;
     align-items: center;
+}
+
+.navbar.is-home .search-icon-btn {
+    background: #f0f5ff;
 }
 
 /* Nav Items Alignment */
@@ -104,12 +127,17 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    color: white;
 }
 
-/* Account Dropdown Logic */
+.navbar.is-home .nav-link {
+    color: #212121;
+}
+
+/* Account Dropdown */
 .account-dropdown {
     position: relative;
-    height: 56px; /* Matches navbar height */
+    height: 56px; 
     display: flex;
     align-items: center;
 }
@@ -120,13 +148,18 @@
     gap: 6px;
     font-weight: 600;
     cursor: pointer;
+    color: white;
+}
+
+.navbar.is-home .account-trigger {
+    color: #212121;
 }
 
 .arrow-icon { font-size: 10px; }
 
 .dropdown-menu {
     position: absolute;
-    top: 56px; /* Sits exactly at the bottom of the navbar */
+    top: 56px; 
     left: 50%;
     transform: translateX(-50%);
     background-color: white;
@@ -174,16 +207,7 @@
     font-size: 14px;
 }
 
-.wishlist-badge {
-    margin-left: auto;
-    background: #dbdbdb;
-    padding: 2px 6px;
-    border-radius: 10px;
-    font-size: 10px;
-    color: #212121;
-}
-
-/* Cart Section Fix */
+/* Cart Section */
 .cart-link {
     text-decoration: none;
     color: white;
@@ -191,6 +215,10 @@
     align-items: center;
     gap: 8px;
     font-weight: 600;
+}
+
+.navbar.is-home .cart-link {
+    color: #212121;
 }
 
 .cart-icon-container {
@@ -203,16 +231,20 @@
     font-size: 20px;
 }
 
+.navbar.is-home .cart-icon-img {
+    color: #2874f0;
+}
+
 .cart-count {
     position: absolute;
     top: -8px;
     right: -8px;
-    background-color: #ff6161; /* Flipkart Red */
+    background-color: #ff6161; 
     color: white;
     font-size: 10px;
     padding: 2px 5px;
     border-radius: 50%;
-    border: 1px solid #2874f0; /* Matches Navbar Blue */
+    border: 1px solid #2874f0; 
     font-weight: bold;
     min-width: 12px;
     text-align: center;

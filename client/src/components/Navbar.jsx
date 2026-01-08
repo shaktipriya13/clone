@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom"; // Added useLocation
 import {
   FaSearch,
   FaShoppingCart,
@@ -18,9 +18,12 @@ import "../styles/Navbar.css";
 import { useCart } from "../context/CartContext";
 
 const Navbar = () => {
-    const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const { cartCount } = useCart();
   const navigate = useNavigate();
+  const location = useLocation(); // Hook to get current path
+
+  const isHomePage = location.pathname === "/";
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -30,28 +33,33 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isHomePage ? "is-home" : ""}`}>
       <div className="navbar-container">
         {/* LOGO */}
         <Link to="/" className="logo">
           <img
-            src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/flipkart-plus_8d85f4.png"
+            /* Logic to change logo color: uses blue logo on white home page */
+            src={isHomePage 
+                ? "https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg" 
+                : "https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/flipkart-plus_8d85f4.png"}
             alt="Flipkart"
             className="logo-img"
           />
-          <div className="logo-sub">
-            Explore <span className="plus-text">Plus</span>
-            <img
-              src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/plus_aef861.png"
-              className="plus-icon"
-              alt=""
-            />
-          </div>
+          {!isHomePage && (
+            <div className="logo-sub">
+              Explore <span className="plus-text">Plus</span>
+              <img
+                src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/plus_aef861.png"
+                className="plus-icon"
+                alt=""
+              />
+            </div>
+          )}
         </Link>
 
         {/* SEARCH */}
         <form className="search-bar" onSubmit={handleSearch}>
-            <button type="submit" className="search-icon-btn">
+          <button type="submit" className="search-icon-btn">
             <FaSearch />
           </button>
           <input
@@ -61,7 +69,6 @@ const Navbar = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          
         </form>
 
         {/* NAV ITEMS */}
@@ -89,7 +96,6 @@ const Navbar = () => {
               </Link>
               <Link to="/wishlist" className="dropdown-item">
                 <FaHeart className="dropdown-icon" /> Wishlist
-                
               </Link>
               <Link to="/coupons" className="dropdown-item">
                 <FaTag className="dropdown-icon" /> Coupons
@@ -110,14 +116,13 @@ const Navbar = () => {
           <div className="nav-link">More <FaAngleDown className="arrow-icon-small" /></div>
 
           {/* CART */}
-         
-        <Link to="/cart" className="cart-link">
-        <div className="cart-icon-container">
-            <FaShoppingCart className="cart-icon-img" />
-            <span className="cart-count">{cartCount}</span>
-        </div>
-        <span className="cart-text">Cart</span>
-        </Link>
+          <Link to="/cart" className="cart-link">
+            <div className="cart-icon-container">
+              <FaShoppingCart className="cart-icon-img" />
+              <span className="cart-count">{cartCount}</span>
+            </div>
+            <span className="cart-text">Cart</span>
+          </Link>
         </div>
       </div>
     </nav>
