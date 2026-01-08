@@ -9,6 +9,7 @@ const Checkout = () => {
   const [loading, setLoading] = useState(true);
   const [selectedAddress, setSelectedAddress] = useState(1);
   const [activeStep, setActiveStep] = useState(2); // 1: Login, 2: Address, 3: Summary, 4: Payment
+  const [paymentOption, setPaymentOption] = useState('COD');
   const navigate = useNavigate();
 
   const addresses = [
@@ -74,6 +75,14 @@ const Checkout = () => {
       setTimeout(() => {
           navigate("/order-confirmed", { state: { orderId: 'OD' + Date.now(), totalAmount } });
       }, 2000);
+  };
+
+  const handlePay = () => {
+    // Simulating payment process
+    toast.info("Redirecting to Payment Gateway...", { position: "top-center", autoClose: 1000 });
+    setTimeout(() => {
+         handleConfirmOrder();
+    }, 1500);
   };
 
   return (
@@ -153,17 +162,34 @@ const Checkout = () => {
                     <div className="step-number-active">3</div>
                     <span className="step-title-active">ORDER SUMMARY</span>
                 </div>
-                <div style={{padding: '16px'}}>
+                <div className="order-summary-content">
                     {cartItems.map(item => (
-                         <div key={item.id} style={{display:'flex', gap:'16px', marginBottom:'16px'}}>
-                             <img src={item.Product.image} style={{width:'60px', height:'60px', objectFit:'contain'}} />
-                             <div style={{color: '#212121'}}>
-                                 <div>{item.Product.title}</div>
-                                 <div style={{fontWeight:'500'}}>₹{item.Product.price}</div>
+                         <div key={item.id} className="order-summary-item">
+                             <div className="item-image-container">
+                                 <img src={item.Product.image} alt={item.Product.title} />
                              </div>
+                             <div className="item-details">
+                                 <div className="item-title">{item.Product.title}</div>
+                                 <div className="seller-info">Seller: RetailNet</div>
+                                 <div className="price-row">
+                                     <span className="current-price">₹{item.Product.price}</span>
+                                     <span className="original-price">₹{(item.Product.price * 1.25).toFixed(0)}</span>
+                                     <span className="discount-info">20% Off</span>
+                                     <span className="offers-info">1 offer applied</span> 
+                                 </div>
+                               
+                             </div>
+                              <div className="delivery-info">
+                                 Delivery by {new Date(Date.now() + 3*24*60*60*1000).toDateString().slice(0, 10)} | <span style={{color:'#388e3c'}}>Free</span> <span style={{textDecoration:'line-through', color:'#878787'}}>₹40</span>
+                            </div>
                          </div>
                     ))}
-                    <button className="deliver-here-btn" onClick={handleContinue}>CONTINUE</button>
+                    <div className="order-summary-footer">
+                        <div className="confirmation-email-text">
+                            Order confirmation email will be sent to <span className="user-email">shaktipriya@gmail.com</span>
+                        </div>
+                        <button className="continue-btn" onClick={handleContinue}>CONTINUE</button>
+                    </div>
                 </div>
              </div>
           ) : (
@@ -186,12 +212,156 @@ const Checkout = () => {
                     <div className="step-number-active">4</div>
                     <span className="step-title-active">PAYMENT OPTIONS</span>
                 </div>
-                <div style={{padding: '24px'}}>
-                    <div style={{marginBottom:'16px', display:'flex', alignItems:'center'}}>
-                        <input type="radio" checked readOnly style={{width:'18px', height:'18px', marginRight:'10px'}}/>
-                        <span style={{fontSize:'14px', fontWeight:'500', color: '#212121'}}>Cash on Delivery (COD)</span>
+                <div className="payment-options-list">
+                    {/* UPI */}
+                    <div className={`payment-option ${paymentOption === 'UPI' ? 'selected' : ''}`} onClick={() => setPaymentOption('UPI')}>
+                        <div className="payment-header-row">
+                            <input type="radio" checked={paymentOption === 'UPI'} readOnly />
+                            <span className="payment-label">UPI</span>
+                        </div>
+                        {paymentOption === 'UPI' && (
+                             <div className="payment-content">
+                                 <div className="payment-instruction">Choose an option</div>
+                                 <div className="payment-sub-options">
+                                     <div className="sub-option-item">
+                                         <input type="radio" name="upiOptions" id="upi_id" defaultChecked />
+                                         <label htmlFor="upi_id" className="sub-option-label">Your UPI ID</label>
+                                     </div>
+                                     <div style={{marginLeft:'26px'}}>
+                                         <input type="text" className="payment-text-input" placeholder="e.g. mobileNumber@upi" />
+                                         <button className="pay-now-btn" onClick={handlePay}>PAY ₹{totalAmount}</button>
+                                     </div>
+                                     
+                                     <div className="sub-option-item">
+                                         <input type="radio" name="upiOptions" id="upi_phonepe" />
+                                         <label htmlFor="upi_phonepe" className="sub-option-label">PhonePe</label>
+                                     </div>
+                                     <div className="sub-option-item">
+                                         <input type="radio" name="upiOptions" id="upi_gpay" />
+                                         <label htmlFor="upi_gpay" className="sub-option-label">Google Pay</label>
+                                     </div>
+                                 </div>
+                             </div>
+                        )}
                     </div>
-                     <button className="deliver-here-btn" onClick={handleConfirmOrder}>CONFIRM ORDER</button>
+
+                     {/* Wallets */}
+                    <div className={`payment-option ${paymentOption === 'WALLETS' ? 'selected' : ''}`} onClick={() => setPaymentOption('WALLETS')}>
+                        <div className="payment-header-row">
+                            <input type="radio" checked={paymentOption === 'WALLETS'} readOnly />
+                            <span className="payment-label">Wallets</span>
+                        </div>
+                         {paymentOption === 'WALLETS' && (
+                             <div className="payment-content">
+                                 <div className="payment-sub-options">
+                                     <div className="sub-option-item">
+                                         <input type="radio" name="walletOptions" id="wallet_phonepe" defaultChecked />
+                                         <label htmlFor="wallet_phonepe" className="sub-option-label">PhonePe Wallet</label>
+                                     </div>
+                                      <div className="sub-option-item">
+                                         <input type="radio" name="walletOptions" id="wallet_paytm" />
+                                         <label htmlFor="wallet_paytm" className="sub-option-label">Paytm Wallet</label>
+                                     </div>
+                                      <button className="pay-now-btn" onClick={handlePay}>PAY ₹{totalAmount}</button>
+                                 </div>
+                             </div>
+                        )}
+                    </div>
+
+                    {/* Credit / Debit / ATM Card */}
+                    <div className={`payment-option ${paymentOption === 'CARD' ? 'selected' : ''}`} onClick={() => setPaymentOption('CARD')}>
+                         <div className="payment-header-row">
+                            <input type="radio" checked={paymentOption === 'CARD'} readOnly />
+                            <span className="payment-label">Credit / Debit / ATM Card</span>
+                        </div>
+                         {paymentOption === 'CARD' && (
+                             <div className="payment-content">
+                                 <div className="card-form">
+                                     <input type="text" className="payment-text-input" placeholder="Enter Card Number" />
+                                     <div className="card-row">
+                                         <div className="card-input-group">
+                                             <input type="text" className="payment-text-input" placeholder="Valid Thru (MM/YY)" />
+                                         </div>
+                                         <div className="card-input-group">
+                                             <input type="text" className="payment-text-input" placeholder="CVV" />
+                                         </div>
+                                     </div>
+                                      <button className="pay-now-btn" onClick={handlePay}>PAY ₹{totalAmount}</button>
+                                 </div>
+                             </div>
+                        )}
+                    </div>
+
+                    {/* Net Banking */}
+                    <div className={`payment-option ${paymentOption === 'NET_BANKING' ? 'selected' : ''}`} onClick={() => setPaymentOption('NET_BANKING')}>
+                        <div className="payment-header-row">
+                            <input type="radio" checked={paymentOption === 'NET_BANKING'} readOnly />
+                            <span className="payment-label">Net Banking</span>
+                        </div>
+                         {paymentOption === 'NET_BANKING' && (
+                             <div className="payment-content">
+                                  <div className="payment-instruction">Popular Banks</div>
+                                  <div className="payment-sub-options" style={{flexDirection:'row', flexWrap:'wrap', gap:'20px', marginBottom:'16px'}}>
+                                     <div className="sub-option-item">
+                                         <input type="radio" name="bankOptions" id="bank_hdfc" />
+                                         <span className="sub-option-label">HDFC Bank</span>
+                                     </div>
+                                     <div className="sub-option-item">
+                                         <input type="radio" name="bankOptions" id="bank_icici" />
+                                         <span className="sub-option-label">ICICI Bank</span>
+                                     </div>
+                                     <div className="sub-option-item">
+                                         <input type="radio" name="bankOptions" id="bank_sbi" />
+                                         <span className="sub-option-label">State Bank of India</span>
+                                     </div>
+                                     <div className="sub-option-item">
+                                         <input type="radio" name="bankOptions" id="bank_axis" />
+                                         <span className="sub-option-label">Axis Bank</span>
+                                     </div>
+                                  </div>
+                                  <div className="payment-instruction">Other Banks</div>
+                                  <select className="bank-select">
+                                      <option>-- Select Bank --</option>
+                                      <option>Bank of Baroda</option>
+                                      <option>Kotak Mahindra Bank</option>
+                                      <option>Punjab National Bank</option>
+                                      <option>Union Bank of India</option>
+                                  </select>
+                                   <div style={{marginTop:'10px'}}>
+                                     <button className="pay-now-btn" onClick={handlePay}>PAY ₹{totalAmount}</button>
+                                   </div>
+                             </div>
+                        )}
+                    </div>
+                    
+                    {/* COD */}
+                    <div className={`payment-option ${paymentOption === 'COD' ? 'selected' : ''}`} onClick={() => setPaymentOption('COD')}>
+                        <div className="payment-header-row">
+                            <input type="radio" checked={paymentOption === 'COD'} readOnly />
+                            <span className="payment-label">Cash on Delivery</span>
+                        </div>
+                         {paymentOption === 'COD' && (
+                             <div className="payment-content">
+                                 <div className="payment-instruction" style={{ marginTop: 0, marginBottom: '20px' }}>
+                                    <span style={{fontSize:'12px', background:'#f0f0f0', padding:'2px 6px', borderRadius:'2px', color:'#212121', marginLeft:'0px'}}>Uncheck for Online Payment</span>
+                                 </div>
+                                 <button className="confirm-order-btn" onClick={handleConfirmOrder}>CONFIRM ORDER</button>
+                             </div>
+                        )}
+                    </div>
+
+                     {/* EMI */}
+                    <div className={`payment-option ${paymentOption === 'EMI' ? 'selected' : ''}`} onClick={() => setPaymentOption('EMI')}>
+                         <div className="payment-header-row">
+                            <input type="radio" checked={paymentOption === 'EMI'} readOnly />
+                            <span className="payment-label">EMI (Easy Installments)</span>
+                        </div>
+                         {paymentOption === 'EMI' && (
+                             <div className="payment-content">
+                                  <div className="payment-instruction">No EMI plans available</div>
+                             </div>
+                        )}
+                    </div>
                 </div>
              </div>
            ) : (

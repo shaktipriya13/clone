@@ -244,3 +244,321 @@
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
     border-radius: 2px;
 }
+
+/* Order Summary Step */
+.order-summary-content {
+    background: white;
+    padding: 0;
+}
+
+.order-summary-item {
+    display: flex;
+    padding: 24px;
+    border-bottom: 1px solid #f0f0f0;
+    gap: 24px;
+    position: relative;
+    background: white;
+}
+
+.item-image-container {
+    width: 112px;
+    height: 112px;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.item-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-title {
+    font-size: 16px;
+    color: #212121;
+    margin-bottom: 6px;
+    line-height: 1.2;
+}
+
+.seller-info {
+    font-size: 12px;
+    color: #878787;
+    margin-bottom: 10px;
+}
+
+.price-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.current-price {
+    font-size: 18px;
+    font-weight: 500;
+    color: #212121;
+}
+
+.original-price {
+    font-size: 14px;
+    color: #878787;
+    text-decoration: line-through;
+}
+
+.discount-info {
+    font-size: 13px;
+    color: #388e3c;
+    font-weight: 500;
+}
+
+.offers-info {
+    font-size: 14px;
+    color: #388e3c;
+    font-weight: 500;
+}
+
+.qty-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.qty-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.qty-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid #c2c2c2;
+    background: #fff;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #000;
+}
+.qty-btn:disabled {
+    cursor: default;
+    color: #c2c2c2;
+}
+
+.qty-input {
+    width: 46px;
+    height: 28px;
+    text-align: center;
+    border: 1px solid #c2c2c2;
+    font-size: 14px;
+    font-weight: 500;
+    color: #212121;
+}
+.qty-input:focus {
+    outline: none;
+}
+
+
+.remove-btn {
+    font-size: 16px;
+    font-weight: 500;
+    color: #212121;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.remove-btn:hover {
+    color: #2874f0;
+}
+
+.delivery-info {
+    font-size: 12px;
+    color: #212121;
+}
+
+.order-summary-footer {
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -2px 10px 0 rgba(0,0,0,.1);
+    background: #fff;
+    position: sticky;
+    bottom: 0;
+}
+
+.confirmation-email-text {
+    font-size: 14px;
+    color: #212121;
+}
+
+.user-email {
+    font-weight: 500;
+}
+
+.continue-btn {
+    background-color: #fb641b;
+    color: white;
+    border: none;
+    padding: 14px 30px; /* Bigger padding */
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+    cursor: pointer;
+    text-transform: uppercase;
+    min-width: 200px;
+}
+
+/* Payment Options */
+.payment-options-list {
+    background: #fff;
+    padding: 0;
+}
+
+.payment-option {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 16px 24px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-option:last-child {
+    border-bottom: none;
+}
+
+.payment-option.selected {
+    background: #fbfbfb;
+}
+
+.payment-header-row {
+     display: flex;
+     align-items: center;
+     gap: 16px;
+}
+
+.payment-header-row input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.payment-label {
+    font-size: 14px;
+    color: #212121;
+    font-weight: 500;
+}
+
+.payment-content {
+    margin-left: 34px; /* Align with text */
+    margin-top: 20px;
+}
+
+.confirm-order-btn {
+    background-color: #fb641b;
+    color: white;
+    border: none;
+    padding: 16px 50px;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+    cursor: pointer;
+    text-transform: uppercase;
+    min-width: 200px;
+}
+
+
+.payment-instruction {
+    color: #878787;
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+/* Detailed Payment Sub-options */
+.payment-sub-options {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sub-option-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sub-option-item input[type="radio"] {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+
+.sub-option-label {
+    font-size: 14px;
+    color: #212121;
+}
+
+.payment-text-input {
+    border: 1px solid #e0e0e0;
+    padding: 10px 12px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 2px;
+    outline: none;
+    margin-top: 8px;
+}
+.payment-text-input:focus {
+    border-color: #2874f0;
+}
+
+.pay-now-btn {
+    background-color: #fb641b;
+    color: white;
+    border: none;
+    padding: 14px 40px;
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 16px;
+    min-width: 180px;
+}
+
+.card-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+}
+
+.card-row {
+    display: flex;
+    gap: 12px;
+}
+.card-input-group {
+    flex: 1;
+}
+
+.bank-select {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    font-size: 14px;
+    outline: none;
+    margin-top: 8px;
+}
