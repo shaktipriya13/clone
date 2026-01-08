@@ -27,6 +27,11 @@ app.use(morgan("dev"));
 // =====================
 // Routes
 // =====================
+// Basic Check Route
+app.get("/", (req, res) => {
+  res.send("API is running... 🚀");
+});
+
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/wishlist", wishlistRoutes);
