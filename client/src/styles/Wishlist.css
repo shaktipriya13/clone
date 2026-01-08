@@ -216,7 +216,7 @@
 }
 
 .confirm-btn {
-    background: #fb641b; /* Flipkart orange for destructive actions */
+    background: #fb641b; /* orange for destructive actions */
     color: white;
     border: none;
     padding: 12px 24px; /* Match cancel button size */

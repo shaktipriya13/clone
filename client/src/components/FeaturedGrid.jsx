@@ -6,10 +6,6 @@ import { toast } from "react-toastify";
 import Loader from "./Loader";
 import "../styles/ProductSection.css";
 import "../styles/ProductCard.css"; 
-// ... (Toast and FeaturedProductItem remain unchanged, I will skip them in replacement if I can target specific lines)
-
-// I will target imports first
-// Then target FeaturedGrid component logic
  
 const CustomToast = ({ message }) => (
   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>

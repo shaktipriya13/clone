@@ -66,7 +66,7 @@ const Checkout = () => {
   };
 
   const handleConfirmOrder = () => {
-      // Demo: Show toast and redirect
+     
       toast.success("Order Placed Successfully!", {
           position: "top-center",
           autoClose: 2000,

@@ -89,8 +89,8 @@
     
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
     margin-left: 10px;
-    padding: 0; /* Critical: remove any default button padding */
-    overflow: visible; /* Ensure icon isn't clipped */
+    padding: 0;
+    overflow: visible;
 }
 
 /* Target the SVG directly to ensure it scales correctly */

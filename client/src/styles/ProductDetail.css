@@ -108,10 +108,8 @@
   background-color: #ff9f00; 
 }
 
-/* New Go to Cart State (Yellow-Orange like Flipkart) */
-/* If you strictly want Grey, use background-color: #53575f; */
 .go-to-cart-btn { 
-  background-color: grey; /* Standard Flipkart stays orange, but we can darken it */
+  background-color: grey; 
   border: 1px solid #e0e0e0;
 }
 
@@ -126,7 +124,7 @@
   width: 60%;
   padding-left: 24px;
   overflow-y: auto;
-  color: #212121; /* Add this line: This makes the general text dark grey/black */
+  color: #212121; 
 }
 
 .pdp-breadcrumb {
@@ -208,7 +206,7 @@
   font-size: 14px;
   margin-bottom: 10px;
   align-items: flex-start;
-  color: #212121; /* Add this line: This ensures the text inside offers is black */
+  color: #212121;
 }
 
 .pdp-offer-item strong { color: #212121; }
