@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductCard from "./ProductCard";
-import "../styles/ProductSection.css"; // Reuse styling for horizontal scroll
+import "../styles/ProductSection.css"; 
 
 const RecentlyViewed = () => {
   const [products, setProducts] = useState([]);

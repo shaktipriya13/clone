@@ -45,9 +45,9 @@
 }
 
 .category-item {
-     display: flex;                 /* ADD */
-    justify-content: flex-start;   /* ADD */
-    align-items: center;           /* ADD */
+     display: flex;                 
+    justify-content: flex-start;   
+    align-items: center;           
     font-size: 14px;
     color: #212121;
     cursor: pointer;

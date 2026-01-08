@@ -16,7 +16,7 @@
 .search-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 8px; /* Gap logic might differ strictly cloning Flipkart, they use border collapse-like or white bg with gap */
+    gap: 8px; 
 }
 
 .search-grid-item {

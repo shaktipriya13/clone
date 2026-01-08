@@ -12,7 +12,6 @@ const Cart = () => {
   const fetchCart = async () => {
     try {
       const response = await axios.get("http://localhost:5000/api/cart");
-      // Backend returns { id, userId, CartItems: [...] }
       setCartItems(response.data.CartItems || []);
     } catch (error) {
       console.error("Error fetching cart:", error);

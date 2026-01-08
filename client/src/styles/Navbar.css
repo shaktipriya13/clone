@@ -139,7 +139,6 @@
     z-index: 1001;
 }
 
-/* Important: This makes the dropdown static on hover */
 .account-dropdown:hover .dropdown-menu {
     visibility: visible;
     opacity: 1;

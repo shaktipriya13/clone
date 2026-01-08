@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaChevronRight } from "react-icons/fa";
 import ProductCard from "./ProductCard";
-import "../styles/ProductSection.css"; // Ensure you create this CSS file
+import "../styles/ProductSection.css"; 
 
 const ProductSection = ({ title, sectionTag, bgColor }) => {
   const [products, setProducts] = useState([]);

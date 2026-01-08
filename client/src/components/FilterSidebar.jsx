@@ -41,15 +41,12 @@ const FilterSidebar = ({ filters, setFilters }) => {
       <div className="filter-section">
         <div className="filter-title">PICK A CATEGORY</div>
         <div className="category-list">
-             {/* <div onClick={() => setFilters(prev => ({...prev, category: ''}))} className={`category-item ${!filters.category ? 'active' : ''}`} style={{display:'flex', alignItems:'center',  justifyContent: 'flex-start',color:'#878787', fontWeight:'500', marginBottom:'5px'}}>
-                <span>All Categories  &gt; </span>
-             </div> */}
              <div
-  onClick={() => setFilters(prev => ({...prev, category: ''}))}
-  className={`category-item ${!filters.category ? 'active' : ''}`}
->
-  <span>All Categories &gt;</span>
-</div>
+                onClick={() => setFilters(prev => ({...prev, category: ''}))}
+                className={`category-item ${!filters.category ? 'active' : ''}`}
+                >
+                <span>All Categories &gt;</span>
+                </div>
 
              {['Food Products', 'Home Improvement', 'Beauty and Grooming', 'Clothing and Accessories', 'Mobiles & Accessories', 'Health Care', 'Books', 'Watches', 'Audio & Video', 'Kitchen, Cookware & Serveware', 'Toys and Games'].map(cat => (
                  <div 

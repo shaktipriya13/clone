@@ -1,324 +1,153 @@
-Got it. I’ll treat this like a **real SDE intern assignment with a 2-day deadline**, using **MERN + MySQL**, and plan it **from absolute scratch → deployment**, exactly aligned with the given problem statement .
 
-Below is a **professional, industry-style execution plan**, not theory.
+# 🛍️ Flipkart Clone
 
----
+![eCommerce](https://img.shields.io/badge/eCommerce-Platform-orange?style=for-the-badge&logo=shopify)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
 
-# Flipkart Clone (MERN + MySQL) — Step-by-Step Execution Plan
 
-## PHASE 0: Understand Scope (30 minutes)
-
-**What you MUST build (no excuses):**
-
-* Product Listing (grid like Flipkart)
-* Product Detail page
-* Cart
-* Checkout + Order placement
-* No authentication (assume 1 default user)
-* MySQL schema is **very important**
-* UI similarity matters more than animations
-
-👉 Keep reminding yourself: **Functional + Clean > Fancy**
+A fully functional, pixel-perfect clone of the **Flipkart** e-commerce platform. This project mimics the core functionalities and UI/UX of Flipkart, providing a seamless shopping experience from product discovery to checkout.
 
 ---
 
-## PHASE 1: Project Setup (1–1.5 hours)
+## 🚀 Features
 
-### 1. Create Folder Structure
+### 🖥️ Frontend (Client)
+-   **Pixel-Perfect UI**: Closely mirrors Flipkart's authentic design language.
+-   **Dynamic Homepage**: Features a responsive carousel, category strip, and categorized product sections (Top Deals, Best Quality, etc.).
+-   **Advanced Search & Filtering**:
+    -   Real-time search functionality.
+    -   Comprehensive sidebar filters: **Category, Price (Slider + Dropdowns), Brand, Customer Ratings, Discount, Availability, and Assured badge**.
+    -   Sort results by **Relevance, Price (Low/High), and Newest**.
+-   **Product Details Page (PDP)**:
+    -   Detailed product view with zoomable images.
+    -   Specs, warranty info, and dynamic delivery offers.
+    -   "Add to Cart" and "Buy Now" flows.
+-   **Cart Management**:
+    -   Add/Remove items, update quantities.
+    -   Real-time price details (Price, Discount, Delivery Charges).
+-   **Interactive Elements**: Hover effects, smooth transitions, toast notifications for actions.
 
+### ⚙️ Backend (Server)
+-   **RESTful API**: Robust Node.js/Express API handling products, cart, and users.
+-   **Database**: **MySQL** with **Sequelize ORM** for structured data management.
+-   **Seeding Script**: Automated database seeding with realistic mock data (Products, Categories, Images).
+-   **Advanced Querying**: efficient filtering and sorting logic implementation.
+
+---
+
+## 🛠️ Tech Stack
+
+| Component | Technology |
+| :--- | :--- |
+| **Frontend** | React.js, React Router DOM, Axios, CSS3, React Toastify, React Icons |
+| **Backend** | Node.js, Express.js |
+| **Database** | MySQL, Sequelize ORM |
+| **Tools** | Vite, Nodemon, Git |
+
+---
+
+## 📸 Screenshots
+
+| Home Page | Search Results & Filters |
+| :---: | :---: |
+| <img src="images/home.png" alt="Home Page" width="400"/> | <img src="images/search.png" alt="Search Page" width="400"/> |
+
+| Product Detail | Cart Page |
+| :---: | :---: |
+| <img src="images/pd.png" alt="PDP" width="400"/> | <img src="images/cart.png" alt="Cart" width="400"/> |
+
+---
+
+## 🔧 Installation & Setup
+
+Follow these steps to set up the project locally.
+
+### Prerequisites
+-   **Node.js** (v14 or higher)
+-   **MySQL** (installed and running)
+
+### 1. Clone the Repository
 ```bash
-flipkart-clone/
-│
-├── client/        # React (Frontend)
-├── server/        # Node + Express (Backend)
-├── README.md
+git clone https://github.com/your-username/flipkart-clone.git
+cd flipkart-clone
 ```
 
----
-
-### 2. Backend Setup (Express + MySQL)
-
+### 2. Backend Setup
+Navigate to the server directory and install dependencies.
 ```bash
 cd server
-npm init -y
-npm install express mysql2 sequelize cors dotenv
-npm install nodemon --save-dev
+npm install
 ```
 
-**Basic structure**
+**Database Configuration**:
+1.  Open `src/config/db.js`.
+2.  Update the `sequelize` instance with your MySQL credentials:
+    ```javascript
+    const sequelize = new Sequelize(
+      "flipkart_clone", // Database Name
+      "root",           // Your Username
+      "YourPassword",   // Your Password
+      { host: "localhost", dialect: "mysql" }
+    );
+    ```
+3.  Create the database in MySQL Workbench/Command Line:
+    ```sql
+    CREATE DATABASE flipkart_clone;
+    ```
 
+**Start the Server**:
 ```bash
-server/
-├── src/
-│   ├── config/
-│   │   └── db.js
-│   ├── models/
-│   ├── routes/
-│   ├── controllers/
-│   ├── seeders/
-│   └── app.js
-└── package.json
+# Runs the server and seeds data automatically
+npm run dev
 ```
+*Server runs on `http://localhost:5000`*
 
----
-
-### 3. Frontend Setup (React)
-
+### 3. Frontend Setup
+Open a new terminal, navigate to the client directory, and install dependencies.
 ```bash
 cd client
-npx create-react-app .
-npm install axios react-router-dom
+npm install
 ```
 
-**Frontend structure**
-
+**Start the React App**:
 ```bash
-client/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── services/
-│   ├── styles/
-│   └── App.js
+npm run dev
 ```
+*Client runs on `http://localhost:5173`*
 
 ---
 
-## PHASE 2: Database Design (CRITICAL – 2 hours)
+## 🔌 API Endpoints
 
-### 4. Design MySQL Schema (THIS WILL BE EVALUATED)
+### Products
+-   `GET /api/products`: Fetch all products (supports filtering & sorting query params).
+-   `GET /api/products/:id`: Get single product details.
 
-#### Tables (Minimum Required)
-
-```text
-users
-- id (PK)
-- name
-- email
-
-products
-- id (PK)
-- title
-- description
-- price
-- category
-- stock
-
-product_images
-- id (PK)
-- product_id (FK)
-- image_url
-
-cart
-- id (PK)
-- user_id (FK)
-
-cart_items
-- id (PK)
-- cart_id (FK)
-- product_id (FK)
-- quantity
-
-orders
-- id (PK)
-- user_id (FK)
-- total_amount
-- address
-- created_at
-
-order_items
-- id (PK)
-- order_id (FK)
-- product_id (FK)
-- price
-- quantity
-```
-
-👉 **Why this matters:**
-You can clearly explain **1-to-many** and **many-to-many** relationships.
+### Cart
+-   `GET /api/cart/:userId`: Get cart items for a user.
+-   `POST /api/cart/add`: Add item to cart.
+-   `PUT /api/cart/update`: Update item quantity.
+-   `DELETE /api/cart/remove/:itemId`: Remove item from cart.
 
 ---
 
-### 5. Setup Sequelize Models
+## 🤝 Contributing
 
-* Create models for all tables
-* Define relationships (`hasMany`, `belongsTo`)
-* Sync DB
+Contributions are welcome! Please fork the repository and create a pull request with your features or fixes.
 
----
-
-### 6. Seed Sample Data
-
-* 20–30 products
-* 4–5 categories (Mobiles, Electronics, Fashion, etc.)
-* Multiple images per product
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
 
 ---
 
-## PHASE 3: Backend APIs (3–4 hours)
 
-### 7. Core APIs (Must-Have)
 
-#### Products
-
-* `GET /products`
-* `GET /products/:id`
-* `GET /products?search=&category=`
-
-#### Cart
-
-* `POST /cart/add`
-* `GET /cart`
-* `PUT /cart/update`
-* `DELETE /cart/remove/:id`
-
-#### Orders
-
-* `POST /orders`
-* `GET /orders/:id`
-
-👉 Assume `user_id = 1` everywhere (as instructed).
-
----
-
-### 8. Clean Architecture
-
-* **Routes** → only URLs
-* **Controllers** → business logic
-* **Models** → DB
-
-This is exactly what interviewers like.
-
----
-
-## PHASE 4: Frontend Pages (5–6 hours)
-
-### 9. Pages to Build (IN THIS ORDER)
-
-#### 1️⃣ Home / Product Listing Page
-
-* Grid layout (Flipkart-style cards)
-* Search bar
-* Category filter
-* Price shown clearly
-
-#### 2️⃣ Product Detail Page
-
-* Image carousel
-* Price + stock
-* “Add to Cart”
-* “Buy Now”
-
-#### 3️⃣ Cart Page
-
-* Product list
-* Quantity increment/decrement
-* Remove item
-* Total price
-
-#### 4️⃣ Checkout Page
-
-* Address form
-* Order summary
-* Place order button
-
-#### 5️⃣ Order Confirmation Page
-
-* Order ID
-* Summary
-
----
-
-### 10. API Integration
-
-* Use `axios`
-* Centralize API calls in `/services/api.js`
-
----
-
-## PHASE 5: UI Styling (2–3 hours)
-
-### 11. UI Rules (IMPORTANT)
-
-* White background
-* Blue primary color
-* Card-based layout
-* No over-animation
-* Responsive grid
-
-👉 You are **NOT expected to copy pixel-by-pixel**
-But layout + behavior must feel Flipkart-like.
-
----
-
-## PHASE 6: Testing & Polishing (1.5 hours)
-
-### 12. Test All Flows
-
-* Add → Cart → Checkout → Order
-* Refresh page (cart should persist via DB)
-* Empty cart edge case
-
----
-
-### 13. README.md (VERY IMPORTANT)
-
-Include:
-
-* Tech stack
-* How to run frontend/backend
-* Database schema explanation
-* Assumptions (default user, no auth)
-
----
-
-## PHASE 7: Deployment (1 hour)
-
-### 14. Deploy
-
-* Backend: Render / Railway
-* Frontend: Vercel / Netlify
-* Use environment variables for DB
-
----
-
-## PHASE 8: Interview Preparation (30 minutes)
-
-Be ready to explain:
-
-* Why MySQL schema is designed this way
-* How cart works without auth
-* How order placement is handled
-* Tradeoffs you made due to time
-
----
-
-## Suggested 2-Day Timeline
-
-| Time            | Task            |
-| --------------- | --------------- |
-| Day 1 Morning   | DB + Backend    |
-| Day 1 Evening   | APIs + Seed     |
-| Day 2 Morning   | Frontend pages  |
-| Day 2 Afternoon | Styling         |
-| Day 2 Evening   | Deploy + README |
-
----
-
-## Final Advice (From Experience)
-
-* **Finish core features first**
-* Don’t waste time on auth
-* Clean code > extra features
-* If it works end-to-end, you win
-
----
-
-If you want, next I can:
-
-* ✅ Design **exact SQL schema**
-* ✅ Create **API contracts**
-* ✅ Give **folder-level boilerplate**
-* ✅ Prioritize features for **maximum score**
-
-Just tell me the next step.
+<p align="center">
+  Made by <b>Shakti Priya</b>
+</p>

@@ -52,8 +52,8 @@ export const getAllProducts = async (req, res) => {
     let order = [['id', 'ASC']];
     if (sort === 'price_asc') order = [['price', 'ASC']];
     if (sort === 'price_desc') order = [['price', 'DESC']];
-    if (sort === 'newest') order = [['createdAt', 'DESC']]; // Assuming createdAt exists, explicitly logical
-    if (sort === 'relevance') order = [['id', 'ASC']]; // Relevance fallback
+    if (sort === 'newest') order = [['createdAt', 'DESC']];
+    if (sort === 'relevance') order = [['id', 'ASC']];
 
     const products = await Product.findAll({
       where,

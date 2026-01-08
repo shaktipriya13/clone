@@ -2,7 +2,6 @@ import Product from "../models/Product.js";
 import ProductImage from "../models/ProductImage.js";
 
 const seedProducts = async () => {
-  // Check if products already exist to avoid duplicates on restart
   const count = await Product.count();
   if (count > 0) {
     console.log("⚠️ Products already seeded, skipping...");
@@ -405,10 +404,6 @@ const seedProducts = async () => {
 
   const products = await Product.bulkCreate(seeds, { returning: true });
 
-  // Optional: Also populate ProductImage table if needed by existing logic, 
-  // though we are mostly using 'image' field on Product now.
-  // To keep schema consistent/clean, we can leave it empty or mirror data.
-  // For now, relying on product.image for the UI.
 
   console.log("✅ Products seeded successfully with multiple sections");
 };

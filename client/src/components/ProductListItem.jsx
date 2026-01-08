@@ -12,8 +12,6 @@ const ProductListItem = ({ product }) => {
     e.preventDefault(); 
     e.stopPropagation();
     try {
-        // Logic same as ProductCard
-        // For brevity, just toggling state locally for UI feedback in this demo
         setIsWishlisted(!isWishlisted);
         toast.info(isWishlisted ? "Removed from Wishlist" : "Added to Wishlist", {
             position: "bottom-center",
@@ -45,7 +43,6 @@ const ProductListItem = ({ product }) => {
           </div>
 
           <div className="list-item-specs">
-              {/* Mock specs based on category */}
               <ul>
                   <li>{product.description}</li>
                   <li>1 Year Warranty</li>

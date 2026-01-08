@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { FaChevronRight, FaHeart, FaCheckCircle } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "../styles/ProductSection.css";
-import "../styles/ProductCard.css"; // Import for wishlist icon styles
-
+import "../styles/ProductCard.css"; 
 const CustomToast = ({ message }) => (
   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
     <FaCheckCircle color="#00ff00" size={20} />

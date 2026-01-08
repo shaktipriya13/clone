@@ -20,7 +20,6 @@ import { useCart } from "../context/CartContext";
 const Navbar = () => {
     const [searchTerm, setSearchTerm] = useState("");
   const { cartCount } = useCart();
-//   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
@@ -111,15 +110,14 @@ const Navbar = () => {
           <div className="nav-link">More <FaAngleDown className="arrow-icon-small" /></div>
 
           {/* CART */}
-         {/* Find the CART section and replace with this cleaned version */}
-<Link to="/cart" className="cart-link">
-  <div className="cart-icon-container">
-    <FaShoppingCart className="cart-icon-img" />
-    {/* Always show the span so it displays '0' initially */}
-    <span className="cart-count">{cartCount}</span>
-  </div>
-  <span className="cart-text">Cart</span>
-</Link>
+         
+        <Link to="/cart" className="cart-link">
+        <div className="cart-icon-container">
+            <FaShoppingCart className="cart-icon-img" />
+            <span className="cart-count">{cartCount}</span>
+        </div>
+        <span className="cart-text">Cart</span>
+        </Link>
         </div>
       </div>
     </nav>
