@@ -11,7 +11,20 @@
 A fully functional, pixel-perfect clone of the **Flipkart** e-commerce platform. This project mimics the core functionalities and UI/UX of Flipkart, providing a seamless shopping experience from product discovery to checkout.
 
 ---
+##  ⚠️ **Deployment Notice**
+>
+> This project is hosted on a **free-tier server**.  
+> Due to cold starts, the backend may take **30–60 seconds** to respond after a period of inactivity.
+>
+> During this time, you may see loading indicators on the UI.
+>
+> **Once the server is awake, the application works smoothly with normal response times.**
+>
+> This behavior is related to hosting constraints and **not the application’s performance or code quality**.
 
+<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/511cffd6-3368-4fc5-aedc-cf7f9b0a846d" />
+
+----
 ## 🚀 Features
 
 ### 🖥️ Frontend (Client)
