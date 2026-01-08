@@ -66,20 +66,31 @@ const ProductDetail = () => {
           
           <div className="main-image-column">
             <div className="pdp-image-container">
-              <div className="wishlist-icon-pdp" onClick={() => setIsWishlisted(!isWishlisted)}>
-                <FaHeart color={isWishlisted ? "#ff4343" : "#c2c2c2"} />
-              </div>
+             <div 
+              className="wishlist-icon-pdp" 
+              onClick={() => {
+                if (isWishlisted) {
+                  setIsWishlisted(false);
+                  toast.info("Item removed from wishlist");
+                } else {
+                  setIsWishlisted(true);
+                  toast.success("Item added to wishlist");
+                }
+              }}
+            >
+              <FaHeart color={isWishlisted ? "#ff4343" : "#c2c2c2"} />
+            </div>
               <img src={product.image} alt={product.title} />
             </div>
             
             <div className="pdp-buttons">
-              <button 
-                className={`pdp-btn ${isInCart ? "add-to-cart-btn" : "add-to-cart-btn"}`} 
+                <button 
+                className={`pdp-btn ${isInCart ? "go-to-cart-btn" : "add-to-cart-btn"}`} 
                 onClick={addToCart}
-                style={isInCart ? {backgroundColor: '#ff9f00'} : {}}
-              >
-                <FaShoppingCart style={{marginRight: '8px'}}/> {isInCart ? "GO TO CART" : "ADD TO CART"}
-              </button>
+                >
+                <FaShoppingCart style={{marginRight: '8px'}}/> 
+                {isInCart ? "GO TO CART" : "ADD TO CART"}
+                </button>
               <button className="pdp-btn buy-now-btn" onClick={() => navigate('/checkout')}>
                 <FaBolt style={{marginRight: '8px'}} /> BUY NOW
               </button>

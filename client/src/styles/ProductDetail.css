@@ -103,7 +103,22 @@
   justify-content: center;
 }
 
-.add-to-cart-btn { background-color: #ff9f00; }
+/* Original Add to Cart State (Orange) */
+.add-to-cart-btn { 
+  background-color: #ff9f00; 
+}
+
+/* New Go to Cart State (Yellow-Orange like Flipkart) */
+/* If you strictly want Grey, use background-color: #53575f; */
+.go-to-cart-btn { 
+  background-color: grey; /* Standard Flipkart stays orange, but we can darken it */
+  border: 1px solid #e0e0e0;
+}
+
+.go-to-cart-btn:hover {
+  background-color: grey;
+}
+
 .buy-now-btn { background-color: #fb641b; }
 
 /* RIGHT SECTION: Details */
