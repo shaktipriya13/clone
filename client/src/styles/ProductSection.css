@@ -25,12 +25,16 @@
   background-color: #2874f0;
   color: white;
   border: none;
-  padding: 10px 20px;
-  font-weight: 500;
-  font-size: 13px;
-  border-radius: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  font-size: 14px;
 }
 
 .section-body {

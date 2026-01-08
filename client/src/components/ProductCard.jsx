@@ -1,11 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../styles/ProductCard.css"; // Ensure you create this CSS file
+import axios from "axios";
+import { FaHeart, FaCheckCircle } from "react-icons/fa";
+import { toast } from "react-toastify";
+import "../styles/ProductCard.css"; 
+
+const CustomToast = ({ message }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+    <FaCheckCircle color="#00ff00" size={20} />
+    <span style={{ fontWeight: '500' }}>{message}</span>
+  </div>
+);
 
 const ProductCard = ({ product }) => {
+  const [isWishlisted, setIsWishlisted] = useState(false);
+
+  const handleWishlistToggle = async (e) => {
+    e.preventDefault(); 
+    e.stopPropagation();
+
+    try {
+        if (isWishlisted) {
+            await axios.delete(`http://localhost:5000/api/wishlist/remove/${product.id}`);
+            setIsWishlisted(false);
+             toast( <CustomToast message="Removed from your Wishlist" />, {
+                position: "bottom-center",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                style: { background: '#333', color: '#fff' }
+            });
+        } else {
+            await axios.post(`http://localhost:5000/api/wishlist/add`, { productId: product.id });
+            setIsWishlisted(true);
+            toast( <CustomToast message="Added to your Wishlist" />, {
+                position: "bottom-center",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                style: { background: '#333', color: '#fff' }
+            });
+        }
+    } catch (error) {
+        console.error("Wishlist toggle error", error);
+    }
+  };
+
   return (
     <Link to={`/product/${product.id}`} className="product-card">
       <div className="product-image-container">
+        <div className="wishlist-icon" onClick={(e) => handleWishlistToggle(e)}>
+             <FaHeart color={isWishlisted ? "#ff4343" : "#c2c2c2"} />
+        </div>
         <img
           src={product.image || "https://via.placeholder.com/150"}
           alt={product.title}

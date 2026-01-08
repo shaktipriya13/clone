@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { FaChevronRight } from "react-icons/fa";
 import ProductCard from "./ProductCard";
 import "../styles/ProductSection.css"; // Ensure you create this CSS file
 
@@ -27,7 +28,9 @@ const ProductSection = ({ title, sectionTag, bgColor }) => {
     <div className="product-section" style={{ backgroundColor: bgColor || "#fff" }}>
       <div className="section-header">
         <h2>{title}</h2>
-        <button className="view-all-btn">VIEW ALL</button>
+        <button className="view-all-btn">
+          <FaChevronRight />
+        </button>
       </div>
       <div className="section-body">
         {products.map((product) => (
