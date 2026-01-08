@@ -51,6 +51,15 @@ const ProductDetail = () => {
         productId: product.id,
       });
        await refreshCart();
+       toast( <CustomToast message="Item added to cart" />, {
+          position: "bottom-center",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          style: { background: '#333', color: '#fff' }
+      });
        navigate("/cart");
     } catch (error) {
       console.error("Error adding to cart:", error);

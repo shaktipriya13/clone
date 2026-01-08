@@ -348,6 +348,51 @@ const seedProducts = async () => {
         section: "summer_decor",
         image: "https://images.unsplash.com/photo-1533038590840-1cde6e668a91?w=300",
         stock: 20
+    },
+    {
+        title: "Floral Cushion Covers",
+        description: "Set of 5 cotton cushion covers",
+        price: 399,
+        category: "Home",
+        section: "summer_decor",
+        image: "https://images.unsplash.com/photo-1579656381226-5fc70ac7ed34?w=300",
+        stock: 100
+    },
+    {
+        title: "Artificial Grass Carpet",
+        description: "Green balcony grass mat",
+        price: 699,
+        category: "Home",
+        section: "summer_decor",
+        image: "https://images.unsplash.com/photo-1589307904488-7d5c9ce68cc6?w=300",
+        stock: 50
+    },
+    {
+        title: "Wooden Wall Shelf",
+        description: "Zigzag floating wall shelf",
+        price: 899,
+        category: "Furniture",
+        section: "summer_decor",
+        image: "https://images.unsplash.com/photo-1598300056393-8a9d94101e14?w=300",
+        stock: 30
+    },
+    {
+        title: "XXL Bean Bag",
+        description: "Filled bean bag with footrest",
+        price: 1999,
+        category: "Furniture",
+        section: "summer_decor",
+        image: "https://images.unsplash.com/photo-1551216223-37c8d1dbec5c?w=300",
+        stock: 25
+    },
+    {
+        title: "Cotton Hammock Swing",
+        description: "Indoor/Outdoor swing chair",
+        price: 1499,
+        category: "Furniture",
+        section: "summer_decor",
+        image: "https://images.unsplash.com/photo-1596175893359-9ae0a3424d54?w=300",
+        stock: 15
     }
   ];
 
