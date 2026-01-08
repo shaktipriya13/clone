@@ -41,7 +41,6 @@ const Wishlist = () => {
       `${import.meta.env.VITE_API_URL}/api/wishlist/remove/${itemToDelete}`
     );
 
-    // ✅ FIX HERE
     setWishlist(prev =>
       prev.filter(item => item.Product.id !== itemToDelete)
     );
