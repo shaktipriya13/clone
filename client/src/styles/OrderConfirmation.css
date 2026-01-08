@@ -1,0 +1,52 @@
+.confirmation-container {
+    background-color: #f1f3f6;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirmation-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+    text-align: center;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.success-img {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.confirmation-text h2 {
+    color: #212121;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.order-id {
+    font-weight: 500;
+    color: #2874f0;
+    margin: 10px 0;
+}
+
+.email-msg {
+    color: #878787;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.shop-more-btn {
+    background-color: #2874f0;
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: 500;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    border-radius: 2px;
+}

@@ -57,11 +57,11 @@
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
-.add-to-cart {
+.add-to-cart-btn {
   background-color: #ff9f00;
 }
 
-.buy-now {
+.buy-now-btn {
   background-color: #fb641b;
 }
 

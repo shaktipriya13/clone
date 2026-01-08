@@ -6,6 +6,9 @@ import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import OrderConfirmation from "./pages/OrderConfirmation";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -18,8 +21,10 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/search" element={<Home />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/order-confirmed" element={<OrderConfirmation />} />
       </Routes>
       <Footer />
+      <ToastContainer />
     </>
   );
 }

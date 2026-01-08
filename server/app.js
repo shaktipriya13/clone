@@ -4,27 +4,33 @@ import morgan from "morgan";
 import sequelize from "./src/models/index.js";
 import seedUser from "./src/seeders/seedUser.js";
 import seedProducts from "./src/seeders/productSeeder.js";
+import Product from "./src/models/Product.js"; // Ensure models are loaded
+import Cart from "./src/models/Cart.js";
+import CartItem from "./src/models/CartItem.js";
+import Wishlist from "./src/models/Wishlist.js";
 
 // routes
 import productRoutes from "./src/routes/productRoutes.js";
 import cartRoutes from "./src/routes/cartRoutes.js";
 import orderRoutes from "./src/routes/orderRoutes.js";
+import wishlistRoutes from "./routes/wishlistRoutes.js";
 
 const app = express();
 
 // =====================
 // Middlewares
 // =====================
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 app.use(morgan("dev"));
 
 // =====================
 // Routes
 // =====================
-app.use("/api/cart", cartRoutes);
 app.use("/api/products", productRoutes);
-app.use("/api/orders", orderRoutes);
+app.use("/api/cart", cartRoutes);
+app.use("/api/wishlist", wishlistRoutes);
+app.use("/api/orders", (req, res) => res.json({ message: "Orders API" })); // PlaceholderRoutes);
 
 // =====================
 // Server Start

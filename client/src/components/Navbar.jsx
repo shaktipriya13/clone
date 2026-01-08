@@ -60,83 +60,100 @@
 // };
 
 // export default Navbar;
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FaSearch, FaShoppingCart, FaUser, FaHeart, FaBox, FaGift, FaTag, FaBell, FaSignOutAlt, FaStar, FaCoins } from "react-icons/fa";
 import "../styles/Navbar.css";
-import { FaSearch, FaRegUserCircle, FaShoppingCart } from "react-icons/fa";
-import { IoChevronDown, IoEllipsisVertical } from "react-icons/io5";
 
 const Navbar = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const navigate = useNavigate();
+    const [searchTerm, setSearchTerm] = useState("");
+    const navigate = useNavigate();
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/search?q=${searchQuery}`);
-    }
-  };
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (searchTerm.trim()) {
+            navigate(`/search?q=${searchTerm}`);
+        }
+    };
 
-  return (
-    <nav className="navbar">
-      <div className="navbar-content">
-        {/* LEFT: Logo */}
-        <div className="navbar-left">
-          <Link to="/" className="logo-container">
-            <img
-              src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg"
-              alt="Flipkart"
-              className="logo"
-            />
-          </Link>
-        </div>
+    return (
+        <nav className="navbar">
+            <div className="navbar-container">
+                <Link to="/" className="logo">
+                     <img 
+                        src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/flipkart-plus_8d85f4.png" 
+                        alt="Flipkart" 
+                        className="logo-img"
+                    />
+                    <div className="logo-sub">
+                        Explore <span style={{color:'#ffe500', fontWeight:'bold', margin:'0 2px'}}>Plus</span>
+                        <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/plus_aef861.png" className="plus-icon" alt=""/>
+                    </div>
+                </Link>
 
-        {/* CENTER: Search */}
-        <form className="navbar-search" onSubmit={handleSearch}>
-          <button type="submit" className="search-btn">
-            <FaSearch className="search-icon" />
-          </button>
-          <input
-            type="text"
-            placeholder="Search for Products, Brands and More"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </form>
+                <form className="search-bar" onSubmit={handleSearch}>
+                    <input 
+                        type="text" 
+                        className="search-input" 
+                        placeholder="Search for products, brands and more"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <button type="submit" className="search-icon-btn">
+                        <FaSearch />
+                    </button>
+                </form>
 
-        {/* RIGHT: Actions */}
-        <div className="navbar-right">
-          <div className="nav-item account-btn">
-            <FaRegUserCircle className="nav-icon-main" />
-            <span>Account</span>
-            <IoChevronDown className="chevron" />
-          </div>
+                <div className="nav-items">
+                    {/* Account Dropdown */}
+                    <div className="account-dropdown">
+                        <span style={{color: 'white', fontWeight: '500'}}>My Account</span>
+                         {/* Dropdown Menu */}
+                         <div className="dropdown-menu">
+                            <Link to="/profile" className="dropdown-item">
+                                <FaUser className="dropdown-icon" /> My Profile
+                            </Link>
+                            <Link to="/supercoin" className="dropdown-item">
+                                <FaCoins className="dropdown-icon" /> SuperCoin Zone
+                            </Link>
+                            <Link to="/plus" className="dropdown-item">
+                                <FaStar className="dropdown-icon" /> Flipkart Plus Zone
+                            </Link>
+                             <Link to="/orders" className="dropdown-item">
+                                <FaBox className="dropdown-icon" /> Orders
+                            </Link>
+                            <Link to="/wishlist" className="dropdown-item">
+                                <FaHeart className="dropdown-icon" /> Wishlist
+                                <span style={{marginLeft: 'auto', background:'#f0f0f0', padding:'2px 6px', fontSize:'11px', borderRadius:'2px'}}>31</span> {/* Mock count */}
+                            </Link>
+                             <Link to="/coupons" className="dropdown-item">
+                                <FaTag className="dropdown-icon" /> Coupons
+                            </Link>
+                             <Link to="/giftcards" className="dropdown-item">
+                                <FaGift className="dropdown-icon" /> Gift Cards
+                            </Link>
+                             <Link to="/notifications" className="dropdown-item">
+                                <FaBell className="dropdown-icon" /> Notifications
+                            </Link>
+                             <div className="dropdown-item">
+                                <FaSignOutAlt className="dropdown-icon" /> Logout
+                            </div>
+                         </div>
+                    </div>
 
-          <Link to="/cart" className="nav-item cart-btn" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <div className="cart-icon-wrapper">
-              <FaShoppingCart className="nav-icon-main" />
-              {/* <span className="cart-count">18</span> */} 
+                    <div style={{color: 'white', fontWeight: '500', cursor:'pointer'}}>Become a Seller</div>
+
+                    <div style={{color: 'white', fontWeight: '500', cursor:'pointer'}}>More</div>
+                    
+                    <Link to="/cart" className="cart-link">
+                         <FaShoppingCart style={{fontSize: '20px'}}/>
+                         <span>Cart</span>
+                    </Link>
+                </div>
             </div>
-            <span>Cart</span>
-          </Link>
-
-          <div className="nav-item seller-btn">
-            <img
-              src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/Header-None-Sellers-60589a.svg"
-              alt="seller"
-              className="seller-icon"
-            />
-            <span>Become a Seller</span>
-          </div>
-
-          <div className="nav-item more-btn">
-            <IoEllipsisVertical className="more-icon" />
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
+        </nav>
+    );
 };
 
-
 export default Navbar;
+```
