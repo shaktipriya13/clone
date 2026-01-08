@@ -5,7 +5,7 @@ const Loader = () => {
     return (
         <div className="loader-container">
             <div className="loader-symbol"></div>
-            <div className="loader-text">Content getting loaded</div>
+            <div className="loader-text">Hang On, Loading Content</div>
         </div>
     );
 };
