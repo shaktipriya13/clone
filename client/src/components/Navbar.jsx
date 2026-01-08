@@ -9,7 +9,9 @@ import {
   FaBox,
   FaGift,
   FaTag,
+  FaUserCircle, FaStore,
   FaBell,
+  FaEllipsisV,
   FaSignOutAlt,
   FaStar,
   FaCoins,
@@ -75,10 +77,12 @@ const Navbar = () => {
         <div className="nav-items">
           {/* ACCOUNT DROPDOWN */}
           <div className="account-dropdown">
-            <div className="account-trigger">
-              <span>My Account</span>
-              <FaAngleDown className="arrow-icon" />
-            </div>
+           <div className="account-trigger">
+  <FaUserCircle className="nav-icon" />
+  <span>My Account</span>
+  <FaAngleDown className="arrow-icon" />
+</div>
+
 
             <div className="dropdown-menu">
               <div className="dropdown-arrow-up"></div>
@@ -112,17 +116,25 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="nav-link">Become a Seller</div>
-          <div className="nav-link">More <FaAngleDown className="arrow-icon-small" /></div>
+        {/* CART */}
+                <Link to="/cart" className="cart-link">
+                    <div className="cart-icon-container">
+                    <FaShoppingCart className="cart-icon-img" />
+                    <span className="cart-count">{cartCount}</span>
+                    </div>
+                    <span className="cart-text">Cart</span>
+                </Link>
+          
+          <div className="nav-link">
+  <FaStore className="nav-icon" />
+  <span>Become a Seller</span>
+</div>
 
-          {/* CART */}
-          <Link to="/cart" className="cart-link">
-            <div className="cart-icon-container">
-              <FaShoppingCart className="cart-icon-img" />
-              <span className="cart-count">{cartCount}</span>
-            </div>
-            <span className="cart-text">Cart</span>
-          </Link>
+            <div className="nav-link more-dots">
+  <FaEllipsisV />
+</div>
+
+         
         </div>
       </div>
     </nav>

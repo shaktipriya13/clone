@@ -253,3 +253,41 @@
     min-width: 12px;
     text-align: center;
 }
+
+
+.more-dots {
+    font-size: 15px;
+    cursor: pointer;
+    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: lighter;
+}
+
+.more-dots:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+}
+
+
+.account-trigger,
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.nav-icon {
+    font-size: 18px;
+}
+
+.account-trigger:hover,
+.nav-link:hover {
+    color: #2874f0;
+}
+
+.more-dots:hover {
+    transform: scale(1.1);
+}
