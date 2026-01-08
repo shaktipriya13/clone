@@ -22,6 +22,9 @@
   align-items: center;
   border-right: 1px solid #f0f0f0;
   padding-right: 16px;
+  position: sticky;
+  top: 80px;
+  align-self: flex-start;
 }
 
 .pdp-image-container {
@@ -30,6 +33,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 24px;
+  width: 100%;
 }
 
 .pdp-image-container img {
@@ -70,10 +74,17 @@
   padding-left: 24px;
 }
 
+.pdp-breadcrumb {
+    font-size: 12px;
+    color: #878787;
+    margin-bottom: 10px;
+}
+
 .pdp-title {
   font-size: 18px;
   margin: 0 0 12px 0;
   font-weight: 400;
+  line-height: 1.4;
 }
 
 .pdp-rating-row {
@@ -121,18 +132,75 @@
   font-weight: 500;
 }
 
-.pdp-description {
-    margin-bottom: 20px;
+/* Offers Section */
+.pdp-offers-section {
+    margin-bottom: 24px;
 }
-.pdp-description h3 {
+.pdp-section-title {
     font-size: 16px;
-    margin-bottom: 8px;
-    color: #878787;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: #000;
+}
+.pdp-offers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.pdp-offer-item {
+    display: flex;
+    align-items: flex-start;
+    font-size: 14px;
+    gap: 10px;
+    line-height: 1.4;
+}
+.pdp-link {
+    color: #2874f0;
+    cursor: pointer;
+    font-weight: 500;
+    margin-left: 5px;
 }
 
+/* Seller Section */
+.pdp-seller-section {
+    margin-bottom: 24px;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 24px;
+}
+
+/* Description */
+.pdp-description {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border: 1px solid #f0f0f0;
+    padding: 24px;
+}
+.pdp-description-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #212121;
+}
+
+/* Specifications */
 .pdp-specifications {
     border: 1px solid #f0f0f0;
-    padding: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+.spec-group {
+    margin-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 16px;
+}
+.spec-group:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.spec-group-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #000; /* Darker header */
 }
 .spec-row {
     display: flex;
@@ -140,19 +208,94 @@
 }
 .spec-label {
     color: #878787;
-    width: 120px;
+    width: 25%;
+    font-size: 14px;
 }
 .spec-value {
     color: #212121;
+    font-size: 14px;
+    flex: 1;
+}
+
+/* Ratings & Reviews */
+.pdp-ratings-reviews {
+    border: 1px solid #f0f0f0;
+    padding: 24px;
+}
+.rate-product-btn {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 10px 20px;
+    color: #2874f0;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+.rating-summary {
+    display: flex;
+    gap: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+}
+.rating-big-box {
+    text-align: center;
+}
+.rating-big {
+    font-size: 32px;
+    color: #26a541; /* Default green is darker if not background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+.rating-count {
+    color: #878787;
+    font-size: 12px;
+}
+.rating-bars {
+    flex: 1;
+    max-width: 400px;
+}
+.rating-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+.star-label {
+    width: 30px;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2px;
+}
+.progress-bg {
+    flex: 1;
+    background: #e0e0e0;
+    height: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.progress-fill {
+    height: 100%;
+}
+.rating-num {
+    width: 30px;
+    color: #878787;
+    font-size: 11px;
 }
 
 
+/* Existing Cart Button Styles */
 .go-to-cart-btn {
-    background-color: #757575 !important; /* Grey background */
-    color: white !important;              /* White text */
+    background-color: #757575 !important;
+    color: white !important;
     border: 1px solid #616161 !important;
 }
 
 .go-to-cart-btn:hover {
-    background-color: #616161 !important; /* Slightly darker grey on hover */
+    background-color: #616161 !important;
 }

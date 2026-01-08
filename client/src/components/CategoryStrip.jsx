@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import "../styles/CategoryStrip.css";
 import { IoChevronDown, IoChevronForward } from "react-icons/io5";
 
@@ -112,9 +113,11 @@ const categories = [
 
 const CategoryStrip = () => {
   const [activeSub, setActiveSub] = useState(0);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   return (
-    <div className="category-wrapper">
+    <div className={`category-wrapper ${!isHomePage ? 'collapsed' : ''}`}>
       <div className="category-strip">
         {categories.map((cat, index) => (
           <div 

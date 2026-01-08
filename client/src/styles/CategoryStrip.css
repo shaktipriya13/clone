@@ -127,3 +127,34 @@
   font-weight: 500;
   color: #212121;
 }
+
+/* Collapsed State (Non-Home Pages) */
+.category-wrapper.collapsed {
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.16);
+    height: 40px; /* Force smaller height */
+}
+
+.category-wrapper.collapsed .category-strip {
+    padding: 0; /* Remove padding */
+    align-items: center; /* Center text vertically */
+}
+
+.category-wrapper.collapsed .img-box {
+    display: none; /* Hide icons */
+}
+
+.category-wrapper.collapsed .category-item {
+    flex-direction: row; /* Align horizontal if needed, though mostly text now */
+    padding-bottom: 0;
+    justify-content: center;
+    height: 100%;
+}
+
+.category-wrapper.collapsed .cat-label {
+    font-size: 13px; /* Slightly smaller text */
+    font-weight: 500;
+}
+
+.category-wrapper.collapsed .mega-menu {
+    top: 40px; /* Adjust dropdown position */
+}
