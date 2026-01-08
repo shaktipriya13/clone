@@ -5,7 +5,7 @@ import { IoChevronDown, IoChevronForward } from "react-icons/io5";
 const categories = [
   {
     name: "Minutes",
-    img: "https://rukminim2.flixcart.com/fk-p-flap/64/64/image/29327f40e9c4d26b.png",
+    img: "https://rukminim2.flixcart.com/fk-p-flap/64/64/image/e00302d428f5c7be.png?q=100",
   },
   {
     name: "Mobiles & Tablets",
@@ -65,20 +65,20 @@ const categories = [
   },
   {
     name: "TVs & Appliances",
-    img: "https://rukminim2.flixcart.com/fk-p-flap/64/64/image/ab7e2b022a4587dd.png",
+    img: "https://rukminim2.flixcart.com/fk-p-flap/64/64/image/e90944802d996756.jpg?q=100",
   },
   {
     name: "Home & Furniture",
-    img: "https://rukminim2.flixcart.com/fk-p-flap/64/64/image/71050627a56b4693.png",
+    img: "https://rukminim2.flixcart.com/fk-p-flap/64/64/image/1788f177649e6991.png?q=100",
     hasMenu: true,
   },
   {
     name: "Flight Bookings",
-    img: "https://rukminim2.flixcart.com/fk-p-flap/64/64/image/dff3f7adcf3a90c6.png",
+    img: "https://rukminim2.flixcart.com/fk-p-flap/64/64/image/3c647c2e0d937dc5.png?q=100",
   },
   {
     name: "Beauty, Food..",
-    img: "https://rukminim2.flixcart.com/fk-p-flap/64/64/image/05d708653beff58e.png",
+    img: "https://rukminim2.flixcart.com/fk-p-flap/64/64/image/b3020c99672953b9.png?q=100",
     hasMenu: true,
   },
   {

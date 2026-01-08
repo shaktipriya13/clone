@@ -35,6 +35,18 @@ const Product = sequelize.define("Product", {
     type: DataTypes.INTEGER,
     defaultValue: 0,
   },
+  rating: {
+    type: DataTypes.FLOAT,
+    defaultValue: 4.4, // Default to a good rating for now
+  },
+  discount: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+  },
+  isAssured: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 export default Product;

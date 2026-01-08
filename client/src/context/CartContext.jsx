@@ -9,29 +9,27 @@ export const CartProvider = ({ children }) => {
   const [cartCount, setCartCount] = useState(0);
 
   // Fetch initial cart count
-  const fetchCartCount = async () => {
-    try {
-      const response = await axios.get('http://localhost:5000/api/cart/1'); // Hardcoded userId: 1 for now
-      if (response.data && response.data.items) {
-          // Calculate total quantity or just number of items? 
-          // Flipkart usually shows number of items. 
-          // Let's count total items in the array for now.
-          setCartCount(response.data.items.length);
-      }
-    } catch (error) {
-      console.error("Error fetching cart count:", error);
+ const fetchCartCount = async () => {
+  try {
+    const response = await axios.get('http://localhost:5000/api/cart/');
+    if (response.data && response.data.CartItems) {
+      // FIX: Sum up the quantities of all items instead of just the array length
+     const totalItems = response.data.CartItems.reduce((acc, item) => acc + (item.quantity || 0), 0);
+     setCartCount(totalItems);
+    } else {
+      setCartCount(0); // Ensure it resets to 0 if cart is empty
     }
-  };
+  } catch (error) {
+    console.error("Error fetching cart count:", error);
+    setCartCount(0);
+  }
+};
 
   useEffect(() => {
     fetchCartCount();
   }, []);
 
   const addToCartContext = async (productId) => {
-      // Optimistic update or wait for API?
-      // For accuracy, let's wait for API success or just refresh count.
-      // But typically we want immediate feedback.
-      // We will refresh the count after the caller (ProductDetail) successfully adds.
       await fetchCartCount();
   };
   
@@ -45,3 +43,4 @@ export const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
+

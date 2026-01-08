@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 import "../styles/Cart.css";
 
 const Cart = () => {
   const [cartItmes, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { refreshCart } = useCart();
 
   const fetchCart = async () => {
     try {
@@ -32,16 +34,23 @@ const Cart = () => {
         cartItemId: itemId,
         quantity: newQty,
       });
-      fetchCart(); // Refresh cart
+      
+      // 2. Refresh both local state AND navbar count
+      await fetchCart(); 
+      await refreshCart(); 
+      
     } catch (error) {
       console.error("Error updating quantity:", error);
     }
   };
-
   const removeItem = async (itemId) => {
     try {
       await axios.delete(`http://localhost:5000/api/cart/remove/${itemId}`);
-      fetchCart();
+      
+      // 3. Refresh both local state AND navbar count
+      await fetchCart();
+      await refreshCart();
+      
     } catch (error) {
       console.error("Error removing item:", error);
     }

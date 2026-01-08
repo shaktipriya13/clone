@@ -17,7 +17,7 @@ const seedProducts = async () => {
       price: 58999,
       category: "Mobiles",
       section: "top_deals",
-      image: "https://images.unsplash.com/photo-1695048065318-971253456722?w=300",
+      image: "https://tse4.mm.bing.net/th/id/OIP.HQJsLTvDrusNnR1FGLMypQHaJy?pid=Api&P=0&h=180",
       stock: 50
     },
     {
@@ -44,7 +44,7 @@ const seedProducts = async () => {
         price: 92990,
         category: "Laptops",
         section: "top_deals",
-        image: "https://images.unsplash.com/photo-1517336714731-489679bd1bab?w=300",
+        image: "https://tse2.mm.bing.net/th/id/OIP.Eeyl8BPmNZLjHqknrktVcwHaFs?pid=Api&P=0&h=180",
         stock: 15
     },
     {
@@ -109,7 +109,7 @@ const seedProducts = async () => {
         price: 1899,
         category: "Fashion",
         section: "best_quality",
-        image: "https://images.unsplash.com/photo-1574634534894-89d7576c8259?w=300",
+        image: "https://tse1.mm.bing.net/th/id/OIP.mz3oeXIPLNBK-WLmF54YlAHaIl?pid=Api&P=0&h=180",
         stock: 80
     },
 
@@ -129,7 +129,7 @@ const seedProducts = async () => {
         price: 3499,
         category: "Furniture",
         section: "furniture_bestsellers",
-        image: "https://images.unsplash.com/photo-1540932296774-70974868c2df?w=300",
+        image: "https://tse2.mm.bing.net/th/id/OIP.FyT0z-bQ0SiKEZ5gwKod6QHaHa?pid=Api&P=0&h=180",
         stock: 25
     },
     {
@@ -138,7 +138,7 @@ const seedProducts = async () => {
         price: 899,
         category: "Furniture",
         section: "furniture_bestsellers",
-        image: "https://images.unsplash.com/photo-1595515106967-4662d54cc87c?w=300",
+        image: "https://sp.yimg.com/ib/th?id=OPAC.L3N7rXWQbbL4uQ474C474&o=5&pid=21.1&w=160&h=105",
         stock: 60
     },
     {
@@ -167,7 +167,7 @@ const seedProducts = async () => {
         price: 299,
         category: "Home",
         section: "home_stylish",
-        image: "https://images.unsplash.com/photo-1550966871-3ed3c47e2ce2?w=300",
+        image: "https://tse3.mm.bing.net/th/id/OIP.RXnaSyACfNu8DfkZffVxxgHaHa?pid=Api&P=0&h=180",
         stock: 100
     },
     {
@@ -176,7 +176,7 @@ const seedProducts = async () => {
         price: 799,
         category: "Home",
         section: "home_stylish",
-        image: "https://images.unsplash.com/photo-1584622050111-993a426fbf0a?w=300",
+        image: "https://tse2.mm.bing.net/th/id/OIP.owpA-j0q08m6aksjcIZncAHaHa?pid=Api&P=0&h=180",
         stock: 50
     },
     {
@@ -194,7 +194,7 @@ const seedProducts = async () => {
         price: 1499,
         category: "Home",
         section: "home_stylish",
-        image: "https://images.unsplash.com/photo-1580301762395-9c027c53711b?w=300",
+        image: "https://tse1.mm.bing.net/th/id/OIP.SSVcbDkbnJ0orE8VYAjEbwHaHa?pid=Api&P=0&h=180",
         stock: 30
     },
     {
@@ -290,7 +290,7 @@ const seedProducts = async () => {
         price: 1499,
         category: "Gadgets",
         section: "gadgets",
-        image: "https://images.unsplash.com/photo-1579586337278-68323a275264?w=300",
+        image: "https://tse4.mm.bing.net/th/id/OIP.P_ndTkaCubhGscR0z9Vv6QHaEK?pid=Api&P=0&h=180",
         stock: 100
     },
     {
@@ -299,7 +299,7 @@ const seedProducts = async () => {
         price: 799,
         category: "Audio",
         section: "gadgets",
-        image: "https://images.unsplash.com/photo-1629814467772-23c013bdcedf?w=300",
+        image: "https://tse1.mm.bing.net/th/id/OIP.D6Nd8_xZsOadqAikWvat_QHaH_?pid=Api&P=0&h=180",
         stock: 150
     },
     {
@@ -308,7 +308,7 @@ const seedProducts = async () => {
         price: 1299,
         category: "Gadgets",
         section: "gadgets",
-        image: "https://images.unsplash.com/photo-1609560029880-43a4d50da09c?w=300",
+        image: "https://tse4.mm.bing.net/th/id/OIP.HZAewOph6bCVE_bcECebzgHaFR?pid=Api&P=0&h=180",
         stock: 80
     },
     {
@@ -355,7 +355,7 @@ const seedProducts = async () => {
         price: 399,
         category: "Home",
         section: "summer_decor",
-        image: "https://images.unsplash.com/photo-1579656381226-5fc70ac7ed34?w=300",
+        image: "https://tse2.mm.bing.net/th/id/OIP.eokQjhmwXWt6NQ1JHowrJwHaHV?pid=Api&P=0&h=180",
         stock: 100
     },
     {
@@ -364,7 +364,7 @@ const seedProducts = async () => {
         price: 699,
         category: "Home",
         section: "summer_decor",
-        image: "https://images.unsplash.com/photo-1589307904488-7d5c9ce68cc6?w=300",
+        image: "https://tse3.mm.bing.net/th/id/OIP.ltOoDxkN2MKAQa4IPtz6CwHaFR?pid=Api&P=0&h=180",
         stock: 50
     },
     {
@@ -373,7 +373,7 @@ const seedProducts = async () => {
         price: 899,
         category: "Furniture",
         section: "summer_decor",
-        image: "https://images.unsplash.com/photo-1598300056393-8a9d94101e14?w=300",
+        image: "https://tse1.mm.bing.net/th/id/OIP.KmGDxM6GaCBGEd292XwAkwHaHa?pid=Api&P=0&h=180",
         stock: 30
     },
     {
@@ -391,12 +391,19 @@ const seedProducts = async () => {
         price: 1499,
         category: "Furniture",
         section: "summer_decor",
-        image: "https://images.unsplash.com/photo-1596175893359-9ae0a3424d54?w=300",
+        image: "https://tse4.mm.bing.net/th/id/OIP.jCFq7n6nittsSH3TTnfGVgHaHa?pid=Api&P=0&h=180",
         stock: 15
     }
   ];
 
-  const products = await Product.bulkCreate(productsData, { returning: true });
+  // Add random discount and assured status
+  const seeds = productsData.map(p => ({
+    ...p,
+    discount: [10, 20, 30, 50, 0][Math.floor(Math.random() * 5)],
+    isAssured: Math.random() > 0.5
+  }));
+
+  const products = await Product.bulkCreate(seeds, { returning: true });
 
   // Optional: Also populate ProductImage table if needed by existing logic, 
   // though we are mostly using 'image' field on Product now.

@@ -145,3 +145,14 @@
 .spec-value {
     color: #212121;
 }
+
+
+.go-to-cart-btn {
+    background-color: #757575 !important; /* Grey background */
+    color: white !important;              /* White text */
+    border: 1px solid #616161 !important;
+}
+
+.go-to-cart-btn:hover {
+    background-color: #616161 !important; /* Slightly darker grey on hover */
+}

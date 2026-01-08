@@ -1,4 +1,3 @@
-/* Navbar Layout */
 .navbar {
     background-color: #2874f0;
     height: 56px;
@@ -11,141 +10,151 @@
 
 .navbar-container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1240px;
     display: flex;
     align-items: center;
     color: white;
     padding: 0 16px;
 }
 
-/* Logo */
+/* Logo Section */
 .logo {
-    margin-right: 20px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     text-decoration: none;
+    line-height: 1;
 }
-.logo-img {
-    width: 75px;
-}
+
+.logo-img { width: 75px; }
+
 .logo-sub {
     font-size: 11px;
     font-style: italic;
     color: #f0f0f0;
     display: flex;
     align-items: center;
-}
-.plus-icon {
-    width: 10px;
-    margin-left: 2px;
+    margin-top: 2px;
 }
 
-/* Search Bar */
+.plus-text { color: #ffe500; font-weight: 600; margin-left: 2px; }
+.plus-icon { width: 10px; margin-left: 2px; }
+
+
+
+
+
+/* ===============================
+   Search Bar Fixed
+================================ */
 .search-bar {
     background-color: white;
-    width: 400px;
+    width: 38vw;
     height: 36px;
     display: flex;
     align-items: center;
     margin-left: 12px;
     border-radius: 2px;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.23);
-    position: relative;
-    z-index: 2;
+    overflow: hidden;
+    /* Ensures no shadows from the container look like strips */
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.23); 
 }
+
 .search-input {
     flex: 1;
     border: none;
     padding: 0 16px;
     font-size: 14px;
     outline: none;
+    /* 🔥 Force white background and remove browser defaults */
+    background-color: #ffffff !important; 
     color: #000;
-    background-color: transparent; /* Fix for dark strip */
 }
+
+/* Fix for Chrome/Edge Autofill (often causes dark/yellow strips) */
+.search-input:-webkit-autofill,
+.search-input:-webkit-autofill:hover, 
+.search-input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 .search-icon-btn {
     border: none;
-    background: transparent;
+    background: white; /* Match the bar background */
     padding: 0 12px;
     cursor: pointer;
     color: #2874f0;
+    font-size: 16px;
     display: flex;
     align-items: center;
 }
 
-/* Nav Items */
+/* Nav Items Alignment */
 .nav-items {
     display: flex;
     align-items: center;
     margin-left: auto;
-    gap: 30px;
-    font-weight: 500;
-    font-size: 16px;
+    gap: 32px;
 }
 
-/* Login Button / Account Dropdown Wrapper */
-.login-btn {
-    background-color: white;
-    color: #2874f0;
-    border: 1px solid #dbdbdb;
-    padding: 5px 40px;
-    font-weight: 600;
+.nav-link {
     cursor: pointer;
-    border-radius: 2px;
-    text-decoration: none;
+    font-weight: 600;
     font-size: 16px;
-    position: relative; /* For dropdown */
-}
-.login-btn:hover {
-    background-color: #f1f1f1;
-}
-
-/* Cart Icon */
-.cart-link {
-    text-decoration: none;
-    color: white;
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-weight: 500;
+    gap: 4px;
 }
 
-/* Dropdown Menu - Standard Flipkart Style */
+/* Account Dropdown Logic */
 .account-dropdown {
     position: relative;
-    cursor: pointer;
+    height: 56px; /* Matches navbar height */
     display: flex;
     align-items: center;
-    gap: 5px;
-    height: 100%;
-    padding: 0 10px;
-}
-.account-dropdown:hover .dropdown-menu {
-    display: block;
 }
 
+.account-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.arrow-icon { font-size: 10px; }
+
 .dropdown-menu {
-    display: none;
     position: absolute;
-    top: 40px; /* Adjust based on navbar height */
+    top: 56px; /* Sits exactly at the bottom of the navbar */
     left: 50%;
     transform: translateX(-50%);
     background-color: white;
     width: 240px;
     box-shadow: 0 4px 16px 0 rgba(0,0,0,.2);
     border-radius: 2px;
-    z-index: 1001; /* Above everything */
-    padding-top: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 1001;
 }
-.dropdown-menu::before {
-    content: "";
+
+/* Important: This makes the dropdown static on hover */
+.account-dropdown:hover .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+}
+
+.dropdown-arrow-up {
     position: absolute;
-    top: -10px;
+    top: -8px;
     left: 50%;
     transform: translateX(-50%);
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid white;
+    width: 0; 
+    height: 0; 
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid white;
 }
 
 .dropdown-item {
@@ -156,16 +165,56 @@
     font-size: 14px;
     text-decoration: none;
     border-bottom: 1px solid #f0f0f0;
-    cursor: pointer;
 }
-.dropdown-item:hover {
-    background-color: #f9f9f9;
-}
-.dropdown-item:last-child {
-    border-bottom: none;
-}
+
+.dropdown-item:hover { background-color: #f1f3f6; }
+
 .dropdown-icon {
     margin-right: 12px;
     color: #2874f0;
-    width: 16px;
+    font-size: 14px;
+}
+
+.wishlist-badge {
+    margin-left: auto;
+    background: #dbdbdb;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+    color: #212121;
+}
+
+/* Cart Section Fix */
+.cart-link {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.cart-icon-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cart-icon-img {
+    font-size: 20px;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff6161; /* Flipkart Red */
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 50%;
+    border: 1px solid #2874f0; /* Matches Navbar Blue */
+    font-weight: bold;
+    min-width: 12px;
+    text-align: center;
 }
