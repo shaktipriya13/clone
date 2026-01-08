@@ -10,7 +10,7 @@ const OrderConfirmation = () => {
     <div className="confirmation-container">
       <div className="confirmation-card">
         <div className="success-icon-container">
-            <img src="https://img1a.flixcart.com/www/linchpin/fk-cp-zion/img/order-placed_e6a640.png" alt="Success" className="success-img"/>
+            <img src="https://tse4.mm.bing.net/th/id/OIP.ukVNTYOgy5Yqggw3hyIx1gAAAA?pid=Api&P=0&h=180" alt="Success" className="success-img"/>
         </div>
         <div className="confirmation-text">
             <h2>Order Placed for ₹{location.state?.totalAmount?.toLocaleString() || '11,849'}!</h2>
