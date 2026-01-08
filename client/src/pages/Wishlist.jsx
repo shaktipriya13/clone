@@ -33,20 +33,29 @@ const Wishlist = () => {
       setShowDeleteModal(true);
   };
 
-  const handleDelete = async () => {
-      if (!itemToDelete) return;
-      try {
-          await axios.delete(`${import.meta.env.VITE_API_URL}/api/wishlist/remove/${itemToDelete}`);
-          setWishlist(prev => prev.filter(item => item.ProductId !== itemToDelete));
-          toast.success("Item removed from wishlist");
-      } catch (error) {
-          console.error("Error removing item:", error);
-          toast.error("Failed to remove item");
-      } finally {
-          setShowDeleteModal(false);
-          setItemToDelete(null);
-      }
-  };
+ const handleDelete = async () => {
+  if (!itemToDelete) return;
+
+  try {
+    await axios.delete(
+      `${import.meta.env.VITE_API_URL}/api/wishlist/remove/${itemToDelete}`
+    );
+
+    // ✅ FIX HERE
+    setWishlist(prev =>
+      prev.filter(item => item.Product.id !== itemToDelete)
+    );
+
+    toast.success("Item removed from wishlist");
+  } catch (error) {
+    console.error("Error removing item:", error);
+    toast.error("Failed to remove item");
+  } finally {
+    setShowDeleteModal(false);
+    setItemToDelete(null);
+  }
+};
+
 
   if (loading) return <Loader />;
 
