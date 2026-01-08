@@ -81,12 +81,22 @@
     color: white;
     border: none;
     cursor: pointer;
-    font-size: 10px; /* Smaller icon size */
-    display: flex;
+    
+    /* Ensure the flex centering is robust */
+    display: inline-flex; /* Changed to inline-flex */
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); /* Added shadow */
-    margin-left: 10px; /* Spacing from title */
+    
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    margin-left: 10px;
+    padding: 0; /* Critical: remove any default button padding */
+    overflow: visible; /* Ensure icon isn't clipped */
+}
+
+/* Target the SVG directly to ensure it scales correctly */
+.view-all-btn-circle svg {
+    display: block;
+    fill: white; /* Secondary backup for color */
 }
 
 .featured-grid-container {
