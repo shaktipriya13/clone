@@ -1,0 +1,22 @@
+.full-width-banner-container {
+  width: 100vw; /* Force it to use 100% of the viewport width */
+  margin-left: calc(-50vw + 50%); /* Centers it if the parent has a max-width */
+  margin-right: calc(-50vw + 50%);
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.banner-image {
+  width: 100%; /* Image fills the container */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Removes bottom whitespace gap */
+  object-fit: cover; /* Ensures the image covers the area if aspect ratios differ */
+}
+
+/* Optional: Add a small margin if you want a tiny gap from the carousel */
+.full-width-banner-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
