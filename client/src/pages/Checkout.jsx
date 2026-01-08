@@ -157,7 +157,7 @@ const Checkout = () => {
                     {cartItems.map(item => (
                          <div key={item.id} style={{display:'flex', gap:'16px', marginBottom:'16px'}}>
                              <img src={item.Product.image} style={{width:'60px', height:'60px', objectFit:'contain'}} />
-                             <div>
+                             <div style={{color: '#212121'}}>
                                  <div>{item.Product.title}</div>
                                  <div style={{fontWeight:'500'}}>₹{item.Product.price}</div>
                              </div>
@@ -189,7 +189,7 @@ const Checkout = () => {
                 <div style={{padding: '24px'}}>
                     <div style={{marginBottom:'16px', display:'flex', alignItems:'center'}}>
                         <input type="radio" checked readOnly style={{width:'18px', height:'18px', marginRight:'10px'}}/>
-                        <span style={{fontSize:'14px', fontWeight:'500'}}>Cash on Delivery (COD)</span>
+                        <span style={{fontSize:'14px', fontWeight:'500', color: '#212121'}}>Cash on Delivery (COD)</span>
                     </div>
                      <button className="deliver-here-btn" onClick={handleConfirmOrder}>CONFIRM ORDER</button>
                 </div>
