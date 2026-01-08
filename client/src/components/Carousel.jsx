@@ -15,6 +15,9 @@ const slides = [
   {
     image: "/c4.webp",
   },
+  {
+    image: "/sale.webp",
+  },
 ];
 
 const Carousel = () => {

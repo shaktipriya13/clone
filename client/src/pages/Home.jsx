@@ -13,7 +13,7 @@ const Home = () => {
       {/* <CategoryStrip /> */}
       <div className="home-content">
         <Carousel />
-        <SaleBanner />
+        {/* <SaleBanner /> */}
 
         {/* Dynamic Sections - Row 1 */}
         <div
