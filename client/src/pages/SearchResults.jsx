@@ -4,6 +4,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import FilterSidebar from "../components/FilterSidebar";
 import ProductCard from "../components/ProductCard";
+import Loader from "../components/Loader";
 
 
 const SearchResults = () => {
@@ -23,6 +24,7 @@ const SearchResults = () => {
       availability: '',
       sort: 'relevance'
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
       // Sync search term from URL if changed via Navbar
@@ -35,6 +37,7 @@ const SearchResults = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        setLoading(true);
         const params = {
             search: filters.search,
             category: filters.category,
@@ -66,6 +69,8 @@ const SearchResults = () => {
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching search results:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -107,7 +112,13 @@ const SearchResults = () => {
             </div>
         </div>
         
-        {products.length > 0 ? (
+
+        
+        {loading ? (
+             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
+                 <Loader /> 
+             </div>
+        ) : products.length > 0 ? (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
                 {products.map((product) => (
                     <ProductCard key={product.id} product={product} />

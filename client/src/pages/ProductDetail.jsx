@@ -4,6 +4,7 @@ import axios from "axios";
 import { FaShoppingCart, FaBolt, FaHeart, FaCheckCircle, FaStar, FaTag } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "../styles/ProductDetail.css";
+import Loader from "../components/Loader";
 import { useCart } from "../context/CartContext";
 
 const CustomToast = ({ message }) => (
@@ -114,7 +115,7 @@ const ProductDetail = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loader />;
   if (!product) return <div>Product not found</div>;
 
   return (

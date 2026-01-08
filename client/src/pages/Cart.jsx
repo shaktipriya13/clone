@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import Loader from "../components/Loader";
 import "../styles/Cart.css";
 
 const Cart = () => {
@@ -70,7 +71,7 @@ const Cart = () => {
   const mrp = totalAmount * 1.25; // Reverse the 20% discount (approx)
   const discount = mrp - totalAmount;
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loader />;
 
   if (cartItmes.length === 0) {
     return (

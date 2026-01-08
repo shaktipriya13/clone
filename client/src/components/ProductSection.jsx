@@ -2,18 +2,23 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaChevronRight } from "react-icons/fa";
 import ProductCard from "./ProductCard";
+import Loader from "./Loader";
 import "../styles/ProductSection.css"; 
 
 const ProductSection = ({ title, sectionTag, bgColor }) => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/products?section=${sectionTag}`);
         setProducts(response.data);
       } catch (error) {
         console.error(`Error fetching ${title} products:`, error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -22,6 +27,7 @@ const ProductSection = ({ title, sectionTag, bgColor }) => {
     }
   }, [sectionTag, title]);
 
+  if (loading) return <Loader />;
   if (products.length === 0) return null;
 
   return (

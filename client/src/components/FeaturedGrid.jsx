@@ -3,8 +3,14 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { FaChevronRight, FaHeart, FaCheckCircle } from "react-icons/fa";
 import { toast } from "react-toastify";
+import Loader from "./Loader";
 import "../styles/ProductSection.css";
 import "../styles/ProductCard.css"; 
+// ... (Toast and FeaturedProductItem remain unchanged, I will skip them in replacement if I can target specific lines)
+
+// I will target imports first
+// Then target FeaturedGrid component logic
+ 
 const CustomToast = ({ message }) => (
   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
     <FaCheckCircle color="#00ff00" size={20} />
@@ -72,21 +78,26 @@ const FeaturedProductItem = ({ product }) => {
 
 const FeaturedGrid = ({ title, sectionTag }) => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        setLoading(true);
         const { data } = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/products?section=${sectionTag}`
         );
         setProducts(data.slice(0, 4));
       } catch (error) {
         console.error("Error fetching featured products:", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchProducts();
   }, [sectionTag]);
 
+  if (loading) return <Loader />;
   if (products.length === 0) return null;
 
   return (

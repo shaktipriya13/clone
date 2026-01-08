@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductCard from "./ProductCard";
+import Loader from "./Loader";
 import "../styles/ProductSection.css"; 
 
 const RecentlyViewed = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchViewedProducts = async () => {
       const viewedIds = JSON.parse(localStorage.getItem("recentlyViewed") || "[]");
       
-      if (viewedIds.length === 0) return;
+      if (viewedIds.length === 0) {
+        setLoading(false);
+        return;
+      }
 
       try {
+        setLoading(true);
         // Fetch products by IDs
         const { data } = await axios.get(
             `${import.meta.env.VITE_API_URL}/api/products?ids=${viewedIds.join(",")}`
@@ -20,11 +26,14 @@ const RecentlyViewed = () => {
         setProducts(data);
       } catch (error) {
         console.error("Error fetching recently viewed:", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchViewedProducts();
   }, []);
 
+  if (loading) return <Loader />;
   if (products.length === 0) return null;
 
   return (
