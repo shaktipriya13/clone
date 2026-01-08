@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import ProductCard from "./ProductCard";
+import SimplifiedProductCard from "./SimplifiedProductCard";
 import Loader from "./Loader";
 import "../styles/ProductSection.css"; 
 
@@ -39,11 +39,11 @@ const RecentlyViewed = () => {
   return (
     <div className="product-section">
       <div className="section-header">
-        <h2>Recently Viewed</h2>
+        <h2 style={{fontSize: '22px', fontWeight: '500'}}>Recently Viewed</h2>
       </div>
       <div className="section-body">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <SimplifiedProductCard key={product.id} product={product} />
         ))}
       </div>
     </div>

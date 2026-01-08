@@ -1,0 +1,61 @@
+.simplified-product-card {
+  width: 200px;
+  background: white;
+  padding: 16px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align everything */
+  text-align: center;
+  border: 1px solid white; /* Invisible border initially */
+  cursor: pointer;
+}
+
+.simplified-product-card:hover {
+   /* Usually homepage items don't have shadow in the simple carousel, but let's add subtle scale */
+   transform: scale(1.02);
+}
+
+.simplified-image-container {
+  height: 150px;
+  width: 150px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.simplified-product-image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.simplified-product-card:hover .simplified-product-image {
+  transform: scale(1.05);
+}
+
+.simplified-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.simplified-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #212121;
+  /* Multi-line clamp if needed, but usually 1 line for categories */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.simplified-price {
+  font-size: 16px;
+  font-weight: 500;
+  color: #388e3c; /* Green color suitable for 'From' offers */
+}
