@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
 import CategoryStrip from "../components/CategoryStrip";
 import Carousel from "../components/Carousel";
 import ProductSection from "../components/ProductSection";
@@ -10,8 +9,7 @@ import Footer from "../components/Footer";
 const Home = () => {
   return (
     <div>
-      <Navbar />
-      <CategoryStrip />
+      {/* <CategoryStrip /> */}
       <div className="home-content">
         <Carousel />
         

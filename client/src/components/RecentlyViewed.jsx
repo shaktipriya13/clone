@@ -8,7 +8,7 @@ const RecentlyViewed = () => {
 
   useEffect(() => {
     const fetchViewedProducts = async () => {
-      const viewedIds = JSON.parse(localStorage.getItem("viewed_products") || "[]");
+      const viewedIds = JSON.parse(localStorage.getItem("recentlyViewed") || "[]");
       
       if (viewedIds.length === 0) return;
 

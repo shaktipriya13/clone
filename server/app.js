@@ -13,7 +13,7 @@ import Wishlist from "./src/models/Wishlist.js";
 import productRoutes from "./src/routes/productRoutes.js";
 import cartRoutes from "./src/routes/cartRoutes.js";
 import orderRoutes from "./src/routes/orderRoutes.js";
-import wishlistRoutes from "./routes/wishlistRoutes.js";
+import wishlistRoutes from "./src/routes/wishlistRoutes.js";
 
 const app = express();
 

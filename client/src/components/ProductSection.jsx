@@ -28,8 +28,9 @@ const ProductSection = ({ title, sectionTag, bgColor }) => {
     <div className="product-section" style={{ backgroundColor: bgColor || "#fff" }}>
       <div className="section-header">
         <h2>{title}</h2>
-        <button className="view-all-btn">
-          <FaChevronRight />
+        <button className="view-all-btn-circle">
+         <FaChevronRight size={14} color="#fff" />
+
         </button>
       </div>
       <div className="section-body">

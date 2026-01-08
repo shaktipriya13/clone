@@ -61,6 +61,7 @@
     font-size: 14px;
     outline: none;
     color: #000;
+    background-color: transparent; /* Fix for dark strip */
 }
 .search-icon-btn {
     border: none;

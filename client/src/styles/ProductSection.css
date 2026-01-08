@@ -34,7 +34,7 @@
   justify-content: center;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  font-size: 14px;
+  /* font-size: 14px; */
 }
 
 .section-body {
@@ -81,10 +81,12 @@
     color: white;
     border: none;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 10px; /* Smaller icon size */
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); /* Added shadow */
+    margin-left: 10px; /* Spacing from title */
 }
 
 .featured-grid-container {

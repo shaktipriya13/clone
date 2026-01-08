@@ -47,6 +47,24 @@ const seedProducts = async () => {
         image: "https://images.unsplash.com/photo-1517336714731-489679bd1bab?w=300",
         stock: 15
     },
+    {
+        title: "Google Pixel 7",
+        description: "Obsidian, 8GB RAM, 128GB Storage",
+        price: 49999,
+        category: "Mobiles",
+        section: "top_deals",
+        image: "https://images.unsplash.com/photo-1598327105666-5b89351aff23?w=300",
+        stock: 25
+    },
+    {
+        title: "Samsung curved Monitor",
+        description: "27 inch Curved LED Monitor",
+        price: 14999,
+        category: "Electronics",
+        section: "top_deals",
+        image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=300",
+        stock: 10
+    },
 
     // Best Quality Products (Fashion)
     {
@@ -75,6 +93,24 @@ const seedProducts = async () => {
         section: "best_quality",
         image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=300",
         stock: 45
+    },
+    {
+        title: "Adidas Running Shoes",
+        description: "Men's Galaxy 6 Running Shoes",
+        price: 3499,
+        category: "Fashion",
+        section: "best_quality",
+        image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=300",
+        stock: 60
+    },
+    {
+        title: "Levi's Denim Shirt",
+        description: "Men's Slim Fit Casual Shirt",
+        price: 1899,
+        category: "Fashion",
+        section: "best_quality",
+        image: "https://images.unsplash.com/photo-1574634534894-89d7576c8259?w=300",
+        stock: 80
     },
 
     // Furniture Bestsellers
@@ -114,6 +150,15 @@ const seedProducts = async () => {
         image: "https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=300",
         stock: 35
     },
+    {
+        title: "Ergonomic Office Chair",
+        description: "High back mesh chair with armrest",
+        price: 4999,
+        category: "Furniture",
+        section: "furniture_bestsellers",
+        image: "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?w=300",
+        stock: 15
+    },
 
     // Make Your Home Stylish
     {
@@ -152,6 +197,15 @@ const seedProducts = async () => {
         image: "https://images.unsplash.com/photo-1580301762395-9c027c53711b?w=300",
         stock: 30
     },
+    {
+        title: "Modern Table Lamp",
+        description: "Bedside lamp with linen shade",
+        price: 899,
+        category: "Home",
+        section: "home_stylish",
+        image: "https://images.unsplash.com/photo-1507473888900-52e1adad5474?w=300",
+        stock: 60
+    },
 
     // Best Value Fashion
     {
@@ -181,6 +235,24 @@ const seedProducts = async () => {
         image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=300",
         stock: 120
     },
+    {
+        title: "Ray-Ban Aviator",
+        description: "Green classic G-15 sunglasses",
+        price: 5999,
+        category: "Fashion",
+        section: "fashion_value",
+        image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300",
+        stock: 40
+    },
+    {
+        title: "Leather Wallet",
+        description: "Men's brown leather wallet",
+        price: 499,
+        category: "Fashion",
+        section: "fashion_value",
+        image: "https://images.unsplash.com/photo-1627123424574-181ce0878af0?w=300",
+        stock: 100
+    },
     
     // Discounts For You
     {
@@ -201,6 +273,15 @@ const seedProducts = async () => {
         image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300",
         stock: 90
     },
+    {
+        title: "Ceramic Coffee Mug",
+        description: "Microwave safe printed mug",
+        price: 149,
+        category: "Home",
+        section: "discounts",
+        image: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=300",
+        stock: 150
+    },
     
     // Top Deals Gadgets
     {
@@ -220,6 +301,53 @@ const seedProducts = async () => {
         section: "gadgets",
         image: "https://images.unsplash.com/photo-1629814467772-23c013bdcedf?w=300",
         stock: 150
+    },
+    {
+        title: "Power Bank 20000mAh",
+        description: "Fast charging portable charger",
+        price: 1299,
+        category: "Gadgets",
+        section: "gadgets",
+        image: "https://images.unsplash.com/photo-1609560029880-43a4d50da09c?w=300",
+        stock: 80
+    },
+    {
+        title: "Wireless Gaming Mouse",
+        description: "RGB lighting, high DPI",
+        price: 999,
+        category: "Gadgets",
+        section: "gadgets",
+        image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300",
+        stock: 60
+    },
+
+    // Summer Decor (New Section)
+    {
+        title: "Cotton Curtains",
+        description: "Set of 2 door curtains, floral",
+        price: 799,
+        category: "Home",
+        section: "summer_decor",
+        image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=300",
+        stock: 50
+    },
+    {
+        title: "Summer Floor Mat",
+        description: "Cool bamboo floor mat",
+        price: 499,
+        category: "Home",
+        section: "summer_decor",
+        image: "https://images.unsplash.com/photo-1600166898405-da9535204843?w=300",
+        stock: 40
+    },
+    {
+        title: "Outdoor Camping Chair",
+        description: "Foldable chair for garden",
+        price: 1299,
+        category: "Furniture",
+        section: "summer_decor",
+        image: "https://images.unsplash.com/photo-1533038590840-1cde6e668a91?w=300",
+        stock: 20
     }
   ];
 
