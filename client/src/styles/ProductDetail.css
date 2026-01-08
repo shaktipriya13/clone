@@ -111,6 +111,7 @@
   width: 60%;
   padding-left: 24px;
   overflow-y: auto;
+  color: #212121; /* Add this line: This makes the general text dark grey/black */
 }
 
 .pdp-breadcrumb {
@@ -192,6 +193,7 @@
   font-size: 14px;
   margin-bottom: 10px;
   align-items: flex-start;
+  color: #212121; /* Add this line: This ensures the text inside offers is black */
 }
 
 .pdp-offer-item strong { color: #212121; }
