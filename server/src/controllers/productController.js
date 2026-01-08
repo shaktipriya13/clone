@@ -16,6 +16,15 @@ export const getAllProducts = async (req, res) => {
       where.category = category;
     }
 
+    if (req.query.section) {
+      where.section = req.query.section;
+    }
+
+    if (req.query.ids) {
+      const ids = req.query.ids.split(",").map((id) => parseInt(id));
+      where.id = { [Op.in]: ids };
+    }
+
     const products = await Product.findAll({
       where,
       include: ProductImage,

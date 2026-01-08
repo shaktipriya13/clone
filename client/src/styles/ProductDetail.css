@@ -1,0 +1,147 @@
+.pdp-container {
+  background-color: #f1f3f6;
+  min-height: 100vh;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.pdp-wrapper {
+  background-color: white;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  padding: 16px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.pdp-image-section {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #f0f0f0;
+  padding-right: 16px;
+}
+
+.pdp-image-container {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.pdp-image-container img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.pdp-buttons {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.pdp-btn {
+  flex: 1;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.add-to-cart {
+  background-color: #ff9f00;
+}
+
+.buy-now {
+  background-color: #fb641b;
+}
+
+.pdp-details-section {
+  width: 60%;
+  padding-left: 24px;
+}
+
+.pdp-title {
+  font-size: 18px;
+  margin: 0 0 12px 0;
+  font-weight: 400;
+}
+
+.pdp-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.pdp-rating {
+  background-color: #388e3c;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.pdp-reviews {
+  color: #878787;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pdp-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.pdp-price {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.pdp-original-price {
+  font-size: 16px;
+  color: #878787;
+  text-decoration: line-through;
+}
+
+.pdp-discount {
+  color: #388e3c;
+  font-weight: 500;
+}
+
+.pdp-description {
+    margin-bottom: 20px;
+}
+.pdp-description h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #878787;
+}
+
+.pdp-specifications {
+    border: 1px solid #f0f0f0;
+    padding: 16px;
+}
+.spec-row {
+    display: flex;
+    margin-bottom: 10px;
+}
+.spec-label {
+    color: #878787;
+    width: 120px;
+}
+.spec-value {
+    color: #212121;
+}

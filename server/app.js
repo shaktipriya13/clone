@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import morgan from "morgan";
 import sequelize from "./src/models/index.js";
 import seedUser from "./src/seeders/seedUser.js";
@@ -15,6 +16,7 @@ const app = express();
 // Middlewares
 // =====================
 app.use(express.json());
+app.use(cors());
 app.use(morgan("dev"));
 
 // =====================
@@ -29,7 +31,8 @@ app.use("/api/orders", orderRoutes);
 // =====================
 const startServer = async () => {
   try {
-    await sequelize.sync({ alter: true });
+    // FORCE reset to avoid deadlocks during development
+    await sequelize.sync({ force: true });
     console.log("✅ Tables created / updated successfully");
 
     await seedUser();

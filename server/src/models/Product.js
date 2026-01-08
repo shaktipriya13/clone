@@ -21,6 +21,16 @@ const Product = sequelize.define("Product", {
   category: {
     type: DataTypes.STRING,
   },
+  section: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    comment: "Home page section tag (e.g., top_deals, summer_decor)",
+  },
+  image: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    comment: "Primary product image URL",
+  },
   stock: {
     type: DataTypes.INTEGER,
     defaultValue: 0,

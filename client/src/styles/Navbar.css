@@ -1,0 +1,138 @@
+/* Container styling */
+.navbar {
+  width: 100%;
+  background-color: #ffffff;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+}
+
+.navbar-content {
+  width: 100%;
+  max-width: 1248px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+/* Logo */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  min-width: 140px;
+}
+
+.logo {
+  height: 40px;
+  cursor: pointer;
+}
+
+/* Search Bar - The most important part for pixel perfect look */
+.navbar-search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #f0f5ff; /* Correct Flipkart search background */
+  border-radius: 8px;
+  height: 40px;
+  transition: all 0.2s;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.search-icon {
+  color: #717478;
+  font-size: 18px;
+}
+
+.navbar-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  color: #212121;
+  font-weight: 400;
+}
+
+.navbar-search input::placeholder {
+  color: #717478;
+}
+
+/* Right Nav Items */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 36px; /* Spacing between Account, Cart, Seller */
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #212121;
+  font-size: 16px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  background-color: #f0f5ff;
+  border-radius: 8px;
+}
+
+.nav-icon-main {
+  font-size: 20px;
+}
+
+.chevron {
+  font-size: 14px;
+  margin-left: -2px;
+}
+
+/* Cart Specific */
+.cart-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  background-color: #ff6161;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+/* Seller Icon */
+.seller-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.more-icon {
+  padding: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 20px;
+  color: #212121;
+}

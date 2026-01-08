@@ -1,0 +1,129 @@
+.category-wrapper {
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.16);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 100;
+}
+
+.category-strip {
+  width: 100%;
+  max-width: 1248px;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  flex: 1;
+  position: relative; /* Anchor for the mega menu */
+  padding-bottom: 10px;
+}
+
+.img-box {
+  height: 64px;
+  width: 64px;
+  margin-bottom: 4px;
+}
+
+.cat-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.cat-chevron {
+  font-size: 10px;
+  margin-left: 4px;
+  color: #878787;
+  transition: transform 0.2s;
+}
+
+/* Mega Menu Container */
+.mega-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  min-width: 500px;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  z-index: 200;
+  text-align: left;
+}
+
+/* Show menu on hover */
+.category-item:hover .mega-menu {
+  display: flex;
+}
+
+.category-item:hover .cat-label {
+  color: #2874f0;
+}
+
+.category-item:hover .cat-chevron {
+  transform: rotate(180deg);
+  color: #2874f0;
+}
+
+/* Left side of Mega Menu */
+.mega-left {
+  width: 220px;
+  background: #ffffff;
+  padding: 8px 0;
+  border-right: 1px solid #f0f0f0;
+}
+
+.sub-item {
+  padding: 12px 16px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #212121;
+}
+
+.sub-item.active {
+  background-color: #f0f5ff; /* Correct Flipkart highlight color */
+  font-weight: 500;
+}
+
+.sub-arrow {
+  font-size: 12px;
+  color: #878787;
+}
+
+/* Right side of Mega Menu */
+.mega-right {
+  flex: 1;
+  padding: 16px 24px;
+  min-width: 250px;
+}
+
+.mega-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #212121;
+  margin-bottom: 16px;
+}
+
+.mega-link {
+  padding: 8px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.mega-link:hover {
+  font-weight: 500;
+  color: #212121;
+}
