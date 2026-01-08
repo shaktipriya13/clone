@@ -26,7 +26,7 @@ const ProductDetail = () => {
     const fetchProductData = async () => {
       try {
         // Fetch Product Details
-        const response = await axios.get(`http://localhost:5000/api/products/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/products/${id}`);
         setProduct(response.data);
         
         // Add to Recently Viewed logic
@@ -37,7 +37,7 @@ const ProductDetail = () => {
         }
 
         // Check if item is already in cart to set initial button state
-        const cartResponse = await axios.get('http://localhost:5000/api/cart/1'); // Hardcoded userId: 1
+        const cartResponse = await axios.get(import.meta.env.VITE_API_URL + '/api/cart/1'); // Hardcoded userId: 1
         if (cartResponse.data && cartResponse.data.CartItems) {
           const exists = cartResponse.data.CartItems.some(item => item.ProductId === parseInt(id));
           setIsInCart(exists);
@@ -60,7 +60,7 @@ const ProductDetail = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/cart/add", {
+      await axios.post(import.meta.env.VITE_API_URL + "/api/cart/add", {
         productId: product.id,
       });
       
@@ -85,7 +85,7 @@ const ProductDetail = () => {
   const handleWishlistToggle = async () => {
     try {
         if (isWishlisted) {
-            await axios.delete(`http://localhost:5000/api/wishlist/remove/${product.id}`);
+            await axios.delete(`${import.meta.env.VITE_API_URL}/api/wishlist/remove/${product.id}`);
             setIsWishlisted(false);
              toast( <CustomToast message="Removed from your Wishlist" />, {
                 position: "bottom-center",
@@ -97,7 +97,7 @@ const ProductDetail = () => {
                 style: { background: '#333', color: '#fff' }
             });
         } else {
-            await axios.post(`http://localhost:5000/api/wishlist/add`, { productId: product.id });
+            await axios.post(`${import.meta.env.VITE_API_URL}/api/wishlist/add`, { productId: product.id });
             setIsWishlisted(true);
             toast( <CustomToast message="Added to your Wishlist" />, {
                 position: "bottom-center",

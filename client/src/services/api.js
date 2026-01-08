@@ -1,7 +1,7 @@
 export const getProducts = async () => {
-  return axios.get("http://localhost:5000/products");
+  return axios.get(import.meta.env.VITE_API_URL + "/products");
 };
 
 export const getProductById = (id) => {
-  return axios.get(`http://localhost:5000/products/${id}`);
+  return axios.get(`${import.meta.env.VITE_API_URL}/products/${id}`);
 };

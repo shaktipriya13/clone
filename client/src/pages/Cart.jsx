@@ -11,7 +11,7 @@ const Cart = () => {
 
   const fetchCart = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/cart");
+      const response = await axios.get(import.meta.env.VITE_API_URL + "/api/cart");
       setCartItems(response.data.CartItems || []);
     } catch (error) {
       console.error("Error fetching cart:", error);
@@ -29,7 +29,7 @@ const Cart = () => {
     if (newQty < 1) return;
 
     try {
-      await axios.put("http://localhost:5000/api/cart/update", {
+      await axios.put(import.meta.env.VITE_API_URL + "/api/cart/update", {
         cartItemId: itemId,
         quantity: newQty,
       });
@@ -44,7 +44,7 @@ const Cart = () => {
   };
   const removeItem = async (itemId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/cart/remove/${itemId}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/cart/remove/${itemId}`);
       
       // 3. Refresh both local state AND navbar count
       await fetchCart();

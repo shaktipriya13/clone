@@ -62,7 +62,7 @@ const SearchResults = () => {
             }
         });
 
-        const response = await axios.get("http://localhost:5000/api/products", { params });
+        const response = await axios.get(import.meta.env.VITE_API_URL + "/api/products", { params });
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching search results:", error);

@@ -38,7 +38,7 @@ const Checkout = () => {
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/cart");
+        const response = await axios.get(import.meta.env.VITE_API_URL + "/api/cart");
         setCartItems(response.data.CartItems || []);
       } catch (error) {
         console.error("Error fetching cart:", error);

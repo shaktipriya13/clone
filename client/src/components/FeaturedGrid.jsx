@@ -21,7 +21,7 @@ const FeaturedProductItem = ({ product }) => {
 
         try {
             if (isWishlisted) {
-                await axios.delete(`http://localhost:5000/api/wishlist/remove/${product.id}`);
+                await axios.delete(`${import.meta.env.VITE_API_URL}/api/wishlist/remove/${product.id}`);
                 setIsWishlisted(false);
                 toast(<CustomToast message="Removed from your Wishlist" />, {
                     position: "bottom-center",
@@ -33,7 +33,7 @@ const FeaturedProductItem = ({ product }) => {
                     style: { background: '#333', color: '#fff' }
                 });
             } else {
-                await axios.post(`http://localhost:5000/api/wishlist/add`, { productId: product.id });
+                await axios.post(`${import.meta.env.VITE_API_URL}/api/wishlist/add`, { productId: product.id });
                 setIsWishlisted(true);
                 toast(<CustomToast message="Added to your Wishlist" />, {
                     position: "bottom-center",
@@ -77,7 +77,7 @@ const FeaturedGrid = ({ title, sectionTag }) => {
     const fetchProducts = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/api/products?section=${sectionTag}`
+          `${import.meta.env.VITE_API_URL}/api/products?section=${sectionTag}`
         );
         setProducts(data.slice(0, 4));
       } catch (error) {

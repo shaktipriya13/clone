@@ -38,14 +38,17 @@ app.use("/api/orders", (req, res) => res.json({ message: "Orders API" })); // Pl
 const startServer = async () => {
   try {
     // FORCE reset to avoid deadlocks during development
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ force: process.env.DB_SYNC_FORCE === 'true' });
     console.log("✅ Tables created / updated successfully");
 
-    await seedUser();
-    await seedProducts();
+    if (process.env.DB_SYNC_FORCE === 'true') {
+        await seedUser();
+        await seedProducts();
+    }
 
-    app.listen(5000, () => {
-      console.log("🚀 Server running on port 5000");
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
     });
   } catch (error) {
     console.error("❌ Server startup failed:", error);

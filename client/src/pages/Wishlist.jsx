@@ -11,7 +11,7 @@ const Wishlist = () => {
   useEffect(() => {
     const fetchWishlist = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/wishlist");
+        const response = await axios.get(import.meta.env.VITE_API_URL + "/api/wishlist");
         setWishlist(response.data);
       } catch (error) {
         console.error("Error fetching wishlist:", error);

@@ -15,7 +15,7 @@ const RecentlyViewed = () => {
       try {
         // Fetch products by IDs
         const { data } = await axios.get(
-            `http://localhost:5000/api/products?ids=${viewedIds.join(",")}`
+            `${import.meta.env.VITE_API_URL}/api/products?ids=${viewedIds.join(",")}`
         );
         setProducts(data);
       } catch (error) {
