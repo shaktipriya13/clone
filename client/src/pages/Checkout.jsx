@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useAuth } from "../context/AuthContext";
 import "../styles/Checkout.css";
 
 const Checkout = () => {
+  const { user } = useAuth();
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedAddress, setSelectedAddress] = useState(1);
@@ -39,7 +41,13 @@ const Checkout = () => {
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const response = await axios.get(import.meta.env.VITE_API_URL + "/api/cart");
+        const token = localStorage.getItem("token");
+        if (!token) {
+             navigate('/login');
+             return;
+        }
+        const config = { headers: { Authorization: `Bearer ${token}` } };
+        const response = await axios.get(import.meta.env.VITE_API_URL + "/api/cart", config);
         setCartItems(response.data.CartItems || []);
       } catch (error) {
         console.error("Error fetching cart:", error);
@@ -66,15 +74,37 @@ const Checkout = () => {
       setActiveStep(4);
   };
 
-  const handleConfirmOrder = () => {
-     
-      toast.success("Order Placed Successfully!", {
-          position: "top-center",
-          autoClose: 2000,
-      });
-      setTimeout(() => {
-          navigate("/order-confirmed", { state: { orderId: 'OD' + Date.now(), totalAmount } });
-      }, 2000);
+  const handleConfirmOrder = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            toast.error("Please login to place order");
+            navigate('/login');
+            return;
+        }
+
+        const addressObj = addresses.find(a => a.id === selectedAddress);
+        const address = `${addressObj.name}, ${addressObj.address}, ${addressObj.phone}`;
+
+        const config = { headers: { Authorization: `Bearer ${token}` } };
+        
+        const response = await axios.post(
+            import.meta.env.VITE_API_URL + "/api/orders/place", 
+            { address }, 
+            config
+        );
+
+        toast.success("Order Placed Successfully!", {
+            position: "top-center",
+            autoClose: 2000,
+        });
+        setTimeout(() => {
+            navigate("/order-confirmed", { state: { orderId: response.data.orderId, totalAmount } });
+        }, 2000);
+      } catch (error) {
+          console.error("Order placement failed", error);
+          toast.error("Failed to place order");
+      }
   };
 
   const handlePay = () => {
@@ -99,7 +129,7 @@ const Checkout = () => {
                     <span className="step-check">✓</span>
                 </div>
                 <div className="step-preview">
-                    <span className="user-contact">+919263335772</span>
+                    <span className="user-contact">{user?.phone || user?.email}</span>
                 </div>
             </div>
             <button className="change-btn-plain">CHANGE</button>
@@ -186,7 +216,7 @@ const Checkout = () => {
                     ))}
                     <div className="order-summary-footer">
                         <div className="confirmation-email-text">
-                            Order confirmation email will be sent to <span className="user-email">shaktipriya@gmail.com</span>
+                            Order confirmation email will be sent to <span className="user-email">{user?.email}</span>
                         </div>
                         <button className="continue-btn" onClick={handleContinue}>CONTINUE</button>
                     </div>

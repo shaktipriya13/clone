@@ -19,7 +19,15 @@ const Wishlist = () => {
 
   const fetchWishlist = async () => {
     try {
-      const response = await axios.get(import.meta.env.VITE_API_URL + "/api/wishlist");
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setWishlist([]); // Or redirect to login
+        setLoading(false);
+        return;
+      }
+      const config = { headers: { Authorization: `Bearer ${token}` } };
+      
+      const response = await axios.get(import.meta.env.VITE_API_URL + "/api/wishlist", config);
       setWishlist(response.data);
     } catch (error) {
       console.error("Error fetching wishlist:", error);
@@ -37,8 +45,12 @@ const Wishlist = () => {
   if (!itemToDelete) return;
 
   try {
+    const token = localStorage.getItem("token");
+    const config = { headers: { Authorization: `Bearer ${token}` } };
+    
     await axios.delete(
-      `${import.meta.env.VITE_API_URL}/api/wishlist/remove/${itemToDelete}`
+      `${import.meta.env.VITE_API_URL}/api/wishlist/remove/${itemToDelete}`,
+      config
     );
 
     setWishlist(prev =>

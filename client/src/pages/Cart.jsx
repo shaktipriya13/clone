@@ -15,7 +15,16 @@ const Cart = () => {
 
   const fetchCart = async () => {
     try {
-      const response = await axios.get(import.meta.env.VITE_API_URL + "/api/cart");
+      const token = localStorage.getItem("token");
+      const config = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
+      
+      if (!token) {
+        setCartItems([]);
+        setLoading(false);
+        return;
+      }
+
+      const response = await axios.get(import.meta.env.VITE_API_URL + "/api/cart", config);
       setCartItems(response.data.CartItems || []);
     } catch (error) {
       console.error("Error fetching cart:", error);
@@ -32,11 +41,14 @@ const Cart = () => {
     const newQty = currentQty + change;
     if (newQty < 1) return;
 
-    try {
+      const token = localStorage.getItem("token");
+      const config = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
+
+      try {
       await axios.put(import.meta.env.VITE_API_URL + "/api/cart/update", {
         cartItemId: itemId,
         quantity: newQty,
-      });
+      }, config);
       
       // 2. Refresh both local state AND navbar count
       await fetchCart(); 
@@ -48,7 +60,10 @@ const Cart = () => {
   };
   const removeItem = async (itemId) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/cart/remove/${itemId}`);
+      const token = localStorage.getItem("token");
+      const config = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
+      
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/cart/remove/${itemId}`, config);
       
       // 3. Refresh both local state AND navbar count
       await fetchCart();

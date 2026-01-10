@@ -1,0 +1,128 @@
+
+.orders-page-container {
+    background-color: #f1f3f6;
+    min-height: 80vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.orders-layout {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    gap: 16px;
+}
+
+.orders-content {
+    flex: 1;
+}
+
+.no-orders {
+    background: #fff;
+    padding: 50px;
+    text-align: center;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+}
+
+.shop-btn {
+    display: inline-block;
+    background-color: #2874f0;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 15px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.order-card {
+    background: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.order-header {
+    background: #f1f3f6;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #878787;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.order-item-row {
+    display: flex;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.order-item-row:last-child {
+    border-bottom: none;
+}
+
+.order-img-box {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.order-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.order-details-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.order-item-title {
+    font-size: 14px;
+    color: #212121;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.order-item-title:hover {
+    color: #2874f0;
+}
+
+.order-status {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-dot.green {
+    background-color: #26a541;
+}
+
+.order-rate-box {
+    display: flex;
+    align-items: center;
+    color: #2874f0;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}

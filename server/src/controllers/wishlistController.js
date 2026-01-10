@@ -3,7 +3,7 @@ import Product from "../models/Product.js";
 
 export const getWishlist = async (req, res) => {
   try {
-    const userId = 1; // Mock User
+    const userId = req.user.id;
     const wishlist = await Wishlist.findAll({
       where: { userId },
       include: [Product]
@@ -18,7 +18,7 @@ export const getWishlist = async (req, res) => {
 export const addToWishlist = async (req, res) => {
   try {
     const { productId } = req.body;
-    const userId = 1; // Mock User
+    const userId = req.user.id;
     
     const [item, created] = await Wishlist.findOrCreate({
       where: { userId, productId }
@@ -38,7 +38,7 @@ export const addToWishlist = async (req, res) => {
 export const removeFromWishlist = async (req, res) => {
   try {
     const { productId } = req.params;
-    const userId = 1; // Mock User
+    const userId = req.user.id;
 
     await Wishlist.destroy({
       where: { userId, productId }

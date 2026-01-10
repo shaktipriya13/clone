@@ -19,9 +19,16 @@ const ProductCard = ({ product }) => {
     e.preventDefault(); 
     e.stopPropagation();
 
+    const token = localStorage.getItem("token");
+    if (!token) {
+        toast.info("Please login to wishlist items");
+        return;
+    }
+    const config = { headers: { Authorization: `Bearer ${token}` } };
+
     try {
         if (isWishlisted) {
-            await axios.delete(`${import.meta.env.VITE_API_URL}/api/wishlist/remove/${product.id}`);
+            await axios.delete(`${import.meta.env.VITE_API_URL}/api/wishlist/remove/${product.id}`, config);
             setIsWishlisted(false);
              toast( <CustomToast message="Removed from your Wishlist" />, {
                 position: "bottom-center",
@@ -33,7 +40,7 @@ const ProductCard = ({ product }) => {
                 style: { background: '#333', color: '#fff' }
             });
         } else {
-            await axios.post(`${import.meta.env.VITE_API_URL}/api/wishlist/add`, { productId: product.id });
+            await axios.post(`${import.meta.env.VITE_API_URL}/api/wishlist/add`, { productId: product.id }, config);
             setIsWishlisted(true);
             toast( <CustomToast message="Added to your Wishlist" />, {
                 position: "bottom-center",

@@ -3,9 +3,12 @@ import CartItem from "../models/CartItem.js";
 import Order from "../models/Order.js";
 import OrderItem from "../models/OrderItem.js";
 import Product from "../models/Product.js";
+import User from "../models/User.js"; 
+import { sendOrderConfirmationEmail } from "../services/emailService.js";
 
 export const placeOrder = async (req, res) => {
-  const userId = 1;
+  const userId = req.user.id;
+  const userEmail = req.user.email; // Assuming req.user contains email from authentication middleware
   const { address } = req.body;
 
   const cart = await Cart.findOne({
@@ -39,5 +42,36 @@ export const placeOrder = async (req, res) => {
 
   await CartItem.destroy({ where: { cartId: cart.id } });
 
+  // Send Email (Async, don't block response)
+  const user = await User.findByPk(userId);
+  if (user) {
+      sendOrderConfirmationEmail(user.email, {
+          orderId: order.id,
+          totalAmount: total,
+          items: cart.CartItems,
+          address
+      }).catch(err => console.error("Email send failed", err));
+  }
+
   res.json({ message: "Order placed", orderId: order.id });
+};
+
+export const getOrders = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const orders = await Order.findAll({
+      where: { userId },
+      include: [
+        {
+          model: OrderItem,
+          include: [Product],
+        },
+      ],
+      order: [['createdAt', 'DESC']],
+    });
+    res.json(orders);
+  } catch (error) {
+    console.error("Get Orders Error:", error);
+    res.status(500).json({ message: "Failed to fetch orders" });
+  }
 };

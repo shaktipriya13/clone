@@ -4,7 +4,7 @@ import Product from "../models/Product.js";
 
 export const addToCart = async (req, res) => {
   try {
-    const userId = 1; // default user (temporary)
+    const userId = req.user.id;
     const { productId, quantity } = req.body;
 
     // 1️⃣ Ensure product exists
@@ -42,7 +42,7 @@ export const addToCart = async (req, res) => {
 
 export const getCart = async (req, res) => {
   try {
-    const userId = 1; // default user (temporary)
+    const userId = req.user.id;
 
     const cart = await Cart.findOne({
       where: { userId }, // ✅ correct column name

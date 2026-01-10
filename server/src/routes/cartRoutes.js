@@ -5,8 +5,11 @@ import {
   removeItem,
   updateQuantity,
 } from "../controllers/cartController.js";
+import { protect } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
+
+router.use(protect); // Protect all cart routes
 
 router.post("/add", addToCart);
 router.get("/", getCart);

@@ -8,10 +8,19 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
   const [cartCount, setCartCount] = useState(0);
 
-  // Fetch initial cart count
+ // Fetch initial cart count
  const fetchCartCount = async () => {
   try {
-    const response = await axios.get(import.meta.env.VITE_API_URL + '/api/cart/');
+    const token = localStorage.getItem("token");
+    const config = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
+    
+    // Only fetch if token is present, otherwise cart is 0 (or guest cart if implemented later)
+    if (!token) {
+        setCartCount(0);
+        return;
+    }
+
+    const response = await axios.get(import.meta.env.VITE_API_URL + '/api/cart/', config);
     if (response.data && response.data.CartItems) {
       // FIX: Sum up the quantities of all items instead of just the array length
      const totalItems = response.data.CartItems.reduce((acc, item) => acc + (item.quantity || 0), 0);

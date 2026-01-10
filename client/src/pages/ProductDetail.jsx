@@ -23,9 +23,19 @@ const ProductDetail = () => {
         setProduct(response.data);
         
         // Cart Check
-        const cartResponse = await axios.get(import.meta.env.VITE_API_URL + '/api/cart/1');
-        if (cartResponse.data?.CartItems) {
-          setIsInCart(cartResponse.data.CartItems.some(item => item.ProductId === parseInt(id)));
+        const token = localStorage.getItem("token");
+        if (token) {
+           const config = { headers: { Authorization: `Bearer ${token}` } };
+           const cartResponse = await axios.get(import.meta.env.VITE_API_URL + '/api/cart', config);
+           if (cartResponse.data?.CartItems) {
+             setIsInCart(cartResponse.data.CartItems.some(item => item.ProductId === parseInt(id)));
+           }
+           
+           // Wishlist Check
+           const wishlistResponse = await axios.get(import.meta.env.VITE_API_URL + '/api/wishlist', config);
+            if (wishlistResponse.data) {
+                setIsWishlisted(wishlistResponse.data.some(product => product.id === parseInt(id)));
+            }
         }
       } catch (error) {
         console.error("Error fetching product:", error);
@@ -37,13 +47,49 @@ const ProductDetail = () => {
   }, [id]);
 
   const addToCart = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        toast.error("Please login to add to cart");
+        navigate("/login");
+        return;
+    }
+
     if (isInCart) { navigate("/cart"); return; }
+    
     try {
-      await axios.post(import.meta.env.VITE_API_URL + "/api/cart/add", { productId: product.id });
+      const config = { headers: { Authorization: `Bearer ${token}` } };
+      await axios.post(import.meta.env.VITE_API_URL + "/api/cart/add", { productId: product.id }, config);
       await refreshCart();
       setIsInCart(true);
       toast.success("Added to cart!");
-    } catch (error) { alert("Failed to add to cart"); }
+    } catch (error) { 
+        console.error("Add to cart error:", error);
+        toast.error("Failed to add to cart"); 
+    }
+  };
+
+  const toggleWishlist = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        toast.error("Please login to add to wishlist");
+        return;
+    }
+    const config = { headers: { Authorization: `Bearer ${token}` } };
+
+      try {
+          if (isWishlisted) {
+              await axios.delete(`${import.meta.env.VITE_API_URL}/api/wishlist/remove/${product.id}`, config);
+              setIsWishlisted(false);
+              toast.info("Item removed from wishlist");
+          } else {
+              await axios.post(`${import.meta.env.VITE_API_URL}/api/wishlist/add`, { productId: product.id }, config);
+              setIsWishlisted(true);
+              toast.success("Item added to wishlist");
+          }
+      } catch (error) {
+          console.error("Wishlist error:", error);
+          toast.error("Failed to update wishlist");
+      }
   };
 
   if (loading) return <Loader />;
@@ -68,15 +114,7 @@ const ProductDetail = () => {
             <div className="pdp-image-container">
              <div 
               className="wishlist-icon-pdp" 
-              onClick={() => {
-                if (isWishlisted) {
-                  setIsWishlisted(false);
-                  toast.info("Item removed from wishlist");
-                } else {
-                  setIsWishlisted(true);
-                  toast.success("Item added to wishlist");
-                }
-              }}
+              onClick={toggleWishlist}
             >
               <FaHeart color={isWishlisted ? "#ff4343" : "#c2c2c2"} />
             </div>
